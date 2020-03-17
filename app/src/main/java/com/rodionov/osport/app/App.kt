@@ -1,0 +1,32 @@
+package com.rodionov.osport.app
+
+import android.app.Application
+import android.content.Context
+import com.facebook.stetho.Stetho
+import com.rodionov.osport.BuildConfig
+import com.rodionov.osport.app.di.module.*
+import com.rodionov.osport.app.platform.LocaleHelper
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
+
+class App : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+
+        startKoin {
+            androidContext(this@App)
+            androidLogger()
+            modules(listOf(appModule, networkModule, repositoryModule, storageModule, viewModelModule, roomModule))
+        }
+
+        if (BuildConfig.DEBUG) {
+            Stetho.initializeWithDefaults(this)
+        }
+    }
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleHelper.onAttach(base))
+    }
+}
