@@ -94,9 +94,8 @@
     <string name="dialog_message_size_video_too_much">Размер прикрепляемого видео превышает 50 МБ</string>
     <string name="dialog_title_file_sending">Отправка файлов…</string>
 
-    <string name="tab_home_title">Главная</string>
     <string name="tab_news_title">Новости</string>
-    <string name="tab_requests_title">Заявки</string>
+    <string name="tab_event_calendar_title">Календарь</string>
     <string name="tab_profile_title">Профиль</string>
 
     <string name="toolbar_title_requests">Заявки</string>
