@@ -8,4 +8,6 @@ import com.rodionov.osport.app.platform.BaseFragment
  */
 class EventCalendarFragment : BaseFragment(R.layout.fragment_event_calendar) {
 
+    override val toolbarTitle = R.string.toolbar_title_calendar
+
 }
