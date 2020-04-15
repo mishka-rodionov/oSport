@@ -69,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/view_height_1"
             android:layout_gravity="bottom"
-            android:background="@color/colorLightView" />
+            android:background="@drawable/ic_ellipse" />
 
     </FrameLayout>
 

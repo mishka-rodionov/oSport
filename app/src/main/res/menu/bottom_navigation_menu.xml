@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/tab_news"
+            android:icon="@drawable/ic_news_feed"
+            android:title="@string/tab_news_title" />
+
+        <item
+            android:id="@+id/tab_events"
+            android:icon="@drawable/ic_event_calendar"
+            android:title="@string/tab_event_calendar_title" />
+
+        <item
+            android:id="@+id/tab_profile"
+            android:icon="@drawable/ic_profile"
+            android:title="@string/tab_profile_title" />
+    </group>
+
+</menu>
