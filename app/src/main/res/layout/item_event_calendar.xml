@@ -8,6 +8,7 @@
     android:layout_marginEnd="@dimen/default_margin_16"
     android:layout_marginBottom="@dimen/default_margin_16"
     android:baselineAligned="false"
+    android:foreground="?selectableItemBackgroundBorderless"
     android:orientation="horizontal">
 
     <LinearLayout

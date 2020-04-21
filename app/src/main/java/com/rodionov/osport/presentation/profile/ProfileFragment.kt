@@ -5,5 +5,8 @@ import com.rodionov.osport.app.platform.BaseFragment
 
 class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
 
+    override fun initViews() {
+
+    }
 
 }
