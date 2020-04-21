@@ -107,6 +107,7 @@
     <string name="toolbar_title_news">Новости</string>
     <string name="toolbar_title_map">Карта</string>
     <string name="toolbar_title_calendar">Календарь</string>
+    <string name="toolbar_title_event_details">Соревнование</string>
 
     <string-array name="spinner_type_critical">
         <item>Низкая</item>

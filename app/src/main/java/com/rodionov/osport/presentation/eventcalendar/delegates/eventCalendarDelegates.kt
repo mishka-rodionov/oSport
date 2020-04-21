@@ -5,8 +5,12 @@ import com.rodionov.osport.R
 import kotlinx.android.synthetic.main.item_event_calendar.view.*
 
 
-fun eventCalendarDelegates() =
+fun eventCalendarDelegates(clickListener: () -> Unit) =
     adapterDelegateLayoutContainer<EventCalendarItem, Any>(R.layout.item_event_calendar) {
+
+        containerView.setOnClickListener {
+            clickListener()
+        }
 
         bind {
             containerView.tvEventDate.text = item.date

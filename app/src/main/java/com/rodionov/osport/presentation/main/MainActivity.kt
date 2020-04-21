@@ -75,30 +75,45 @@ class MainActivity : BaseActivity(R.layout.activity_main), FragmentNavigation, F
     }
 
     override fun switchTab(index: Int) {
+        bottomNavigation.selectedItemId = tabs[index].first
+        fragNavController.switchTab(index)
     }
 
     override fun pushFragment(fragment: BaseFragment) {
+        fragNavController.pushFragment(fragment)
     }
 
     override fun popFragment() {
+        fragNavController.popFragment()
     }
 
     override fun popFragments(count: Int) {
+        fragNavController.popFragments(count)
     }
 
     override fun clearStack() {
+        fragNavController.clearStack()
     }
 
     override fun showDialogFragment(dialogFragment: DialogFragment) {
+        fragNavController.showDialogFragment(dialogFragment)
     }
 
     override fun canGoBack(): Boolean {
-        return true
+        return fragNavController.currentStack?.size?.let { size ->
+            size > 1
+        } ?: false
     }
 
     override fun showBottomNavigation() {
+        if (bottomNavigation.visibility != View.VISIBLE) {
+            bottomNavigation?.show()
+        }
     }
 
     override fun hideBottomNavigation() {
+        if (bottomNavigation.visibility != View.GONE) {
+            bottomNavigation?.gone()
+        }
     }
 }
