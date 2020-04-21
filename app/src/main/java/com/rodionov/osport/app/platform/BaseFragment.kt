@@ -60,9 +60,11 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentL
         }
 
         setToolbarTitle()
-
+        initViews()
         observeBaseLiveData()
     }
+
+    abstract fun initViews()
 
     open fun observeBaseLiveData() {
         screenViewModel?.let { vm ->
