@@ -106,14 +106,14 @@ class MainActivity : BaseActivity(R.layout.activity_main), FragmentNavigation, F
     }
 
     override fun showBottomNavigation() {
-        if (bottomNavigation.visibility != View.VISIBLE) {
-            bottomNavigation?.show()
-        }
+//        if (bottomNavigation.visibility != View.VISIBLE) {
+//            bottomNavigation?.show()
+//        }
     }
 
     override fun hideBottomNavigation() {
-        if (bottomNavigation.visibility != View.GONE) {
-            bottomNavigation?.gone()
-        }
+//        if (bottomNavigation.visibility != View.GONE) {
+//            bottomNavigation?.gone()
+//        }
     }
 }
