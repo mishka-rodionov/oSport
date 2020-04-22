@@ -1,6 +1,7 @@
 package com.rodionov.osport.presentation.main
 
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ncapdevi.fragnav.FragNavController
@@ -11,6 +12,8 @@ import com.ncapdevi.fragnav.FragNavSwitchController
 import com.ncapdevi.fragnav.FragNavTransactionOptions
 import com.ncapdevi.fragnav.tabhistory.UniqueTabHistoryStrategy
 import com.rodionov.osport.R
+import com.rodionov.osport.app.extensions.gone
+import com.rodionov.osport.app.extensions.show
 import com.rodionov.osport.app.platform.BaseActivity
 import com.rodionov.osport.app.platform.BaseFragment
 import com.rodionov.osport.app.platform.BaseViewModel
@@ -106,14 +109,14 @@ class MainActivity : BaseActivity(R.layout.activity_main), FragmentNavigation, F
     }
 
     override fun showBottomNavigation() {
-//        if (bottomNavigation.visibility != View.VISIBLE) {
-//            bottomNavigation?.show()
-//        }
+        if (bottomNavigation.visibility != View.VISIBLE) {
+            bottomNavigation?.show()
+        }
     }
 
     override fun hideBottomNavigation() {
-//        if (bottomNavigation.visibility != View.GONE) {
-//            bottomNavigation?.gone()
-//        }
+        if (bottomNavigation.visibility != View.GONE) {
+            bottomNavigation?.gone()
+        }
     }
 }
