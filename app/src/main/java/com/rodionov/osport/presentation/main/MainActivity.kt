@@ -11,6 +11,8 @@ import com.ncapdevi.fragnav.FragNavController.Companion.TAB3
 import com.ncapdevi.fragnav.FragNavSwitchController
 import com.ncapdevi.fragnav.FragNavTransactionOptions
 import com.ncapdevi.fragnav.tabhistory.UniqueTabHistoryStrategy
+import com.ncapdevi.fragnav.tabhistory.UnlimitedTabHistoryController
+import com.ncapdevi.fragnav.tabhistory.UnlimitedTabHistoryStrategy
 import com.rodionov.osport.R
 import com.rodionov.osport.app.extensions.gone
 import com.rodionov.osport.app.extensions.show
@@ -23,7 +25,8 @@ import com.rodionov.osport.presentation.news.NewsFragment
 import com.rodionov.osport.presentation.profile.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity(R.layout.activity_main), FragmentNavigation, FragNavController.RootFragmentListener {
+class MainActivity : BaseActivity(R.layout.activity_main), FragmentNavigation,
+    FragNavController.RootFragmentListener {
 
     override val screenViewModel: BaseViewModel?
         get() = super.screenViewModel
@@ -55,7 +58,7 @@ class MainActivity : BaseActivity(R.layout.activity_main), FragmentNavigation, F
         fragNavController.apply {
             rootFragmentListener = this@MainActivity
             fragmentHideStrategy = FragNavController.DETACH
-            navigationStrategy = UniqueTabHistoryStrategy(object : FragNavSwitchController {
+            navigationStrategy = UnlimitedTabHistoryStrategy(object : FragNavSwitchController {
                 override fun switchTab(index: Int, transactionOptions: FragNavTransactionOptions?) {
                     bottomNavigation.selectedItemId = tabs[index].first
                 }
@@ -71,6 +74,15 @@ class MainActivity : BaseActivity(R.layout.activity_main), FragmentNavigation, F
     override val numberOfRootFragments = tabs.size
 
     override fun getRootFragment(index: Int) = tabs[index].second
+
+    override fun onBackPressed() {
+        val topFragment = fragNavController.currentStack?.peek()
+        when {
+            topFragment is BaseFragment && topFragment.onBackPressed() -> Unit
+            fragNavController.popFragment() -> Unit
+            else -> super.onBackPressed()
+        }
+    }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)

@@ -1,6 +1,7 @@
 package com.rodionov.osport.app.di.module
 
 import com.rodionov.osport.presentation.eventcalendar.EventCalendarViewModel
+import com.rodionov.osport.presentation.map.MapViewModel
 import com.rodionov.osport.presentation.newevent.NewEventViewModel
 import com.rodionov.osport.presentation.profile.ProfileViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -12,4 +13,5 @@ val viewModelModule = module {
     viewModel { EventCalendarViewModel() }
     viewModel { ProfileViewModel() }
     viewModel { NewEventViewModel() }
+    viewModel { MapViewModel() }
 }
