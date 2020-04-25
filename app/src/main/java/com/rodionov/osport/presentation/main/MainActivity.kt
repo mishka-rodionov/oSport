@@ -3,6 +3,7 @@ package com.rodionov.osport.presentation.main
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ncapdevi.fragnav.FragNavController
 import com.ncapdevi.fragnav.FragNavController.Companion.TAB1
@@ -95,11 +96,15 @@ class MainActivity : BaseActivity(R.layout.activity_main), FragmentNavigation,
     }
 
     override fun pushFragment(fragment: BaseFragment) {
-        fragNavController.pushFragment(fragment)
+        fragNavController.pushFragment(fragment, FragNavTransactionOptions.newBuilder().apply {
+            transition = FragmentTransaction.TRANSIT_FRAGMENT_OPEN
+        }.build())
     }
 
     override fun popFragment() {
-        fragNavController.popFragment()
+        fragNavController.popFragment(FragNavTransactionOptions.newBuilder().apply {
+            transition = FragmentTransaction.TRANSIT_FRAGMENT_CLOSE
+        }.build())
     }
 
     override fun popFragments(count: Int) {

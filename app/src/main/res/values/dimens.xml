@@ -2,6 +2,7 @@
 <resources>
 
     <dimen name="tv_coordinates_min_width">200dp</dimen>
+    <dimen name="btn_border">2dp</dimen>
 
     <dimen name="dot_size">5dp</dimen>
 
