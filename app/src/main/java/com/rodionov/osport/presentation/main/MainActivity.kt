@@ -22,6 +22,7 @@ import com.rodionov.osport.app.platform.BaseFragment
 import com.rodionov.osport.app.platform.BaseViewModel
 import com.rodionov.osport.app.platform.FragmentNavigation
 import com.rodionov.osport.presentation.eventcalendar.EventCalendarFragment
+import com.rodionov.osport.presentation.login.LoginFragment
 import com.rodionov.osport.presentation.news.NewsFragment
 import com.rodionov.osport.presentation.profile.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -39,7 +40,7 @@ class MainActivity : BaseActivity(R.layout.activity_main), FragmentNavigation,
     private val tabs = arrayListOf(
         R.id.tab_news to NewsFragment(),
         R.id.tab_events to EventCalendarFragment(),
-        R.id.tab_profile to ProfileFragment()
+        R.id.tab_profile to LoginFragment()
     )
 
     override fun initInterface(savedInstanceState: Bundle?) {

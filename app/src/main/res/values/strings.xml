@@ -32,6 +32,14 @@
     <string name="label_account">Личный кабинет</string>
     <string name="label_russian_language" translatable="false">Русский</string>
     <string name="label_english_language" translatable="false">English</string>
+    <string name="label_first_name">Имя</string>
+    <string name="label_last_name">Фамилия</string>
+    <string name="label_birthday">Дата рождения</string>
+    <string name="label_city">Город</string>
+    <string name="label_sport_club">Спортивный клуб</string>
+    <string name="label_email">Email</string>
+    <string name="label_login">Логин</string>
+    <string name="label_password">Пароль</string>
 
     <string name="placeholder_coordinates">%1$s, %2$s</string>
     <string name="placeholder_count_media" translatable="false">%1$d/%2$d</string>
@@ -49,6 +57,7 @@
     <string name="toolbar_title_calendar">Календарь</string>
     <string name="toolbar_title_event_details">Соревнование</string>
     <string name="toolbar_title_enter">Вход</string>
+    <string name="toolbar_title_registration">Регистрация</string>
 
     <string-array name="spinner_type_critical">
         <item>Низкая</item>
