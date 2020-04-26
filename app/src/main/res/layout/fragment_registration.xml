@@ -6,114 +6,105 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/toolbarRegistration"
+        android:id="@+id/toolbarAccount"
         layout="@layout/toolbar_with_icon" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/default_margin_16"
-        android:layout_marginEnd="@dimen/default_margin_16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin_16"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarRegistration">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarAccount">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ivParticipantAddAvatar"
-            android:layout_width="@dimen/profile_image_radius"
-            android:layout_height="@dimen/profile_image_radius"
-            android:layout_marginTop="@dimen/default_margin_16"
-            android:src="@drawable/ic_profile"
-            app:civ_border_color="#FF000000"
-            app:civ_border_width="2dp"
-            app:layout_constraintEnd_toEndOf="parent"
+        <TextView
+            android:id="@+id/tvLoginLabel"
+            style="@style/Text.Hint.16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/label_login"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintBottom_toBottomOf="@+id/etLogin"
+            app:layout_constraintEnd_toStartOf="@+id/etLogin"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/etLogin" />
+
+        <EditText
+            android:id="@+id/etLogin"
+            style="@style/EditText.Theme"
+            android:layout_width="0dp"
+            app:layout_constraintHorizontal_weight="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tvLoginLabel"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvFirstNameLabel"
+            android:id="@+id/tvPasswordLabel"
             style="@style/Text.Hint.16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/label_first_name"
-            android:gravity="end"
-            app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintBottom_toBottomOf="@+id/etFirstName"
-            app:layout_constraintEnd_toStartOf="@+id/barrier"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/etFirstName" />
-
-        <EditText
-            android:id="@+id/etFirstName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_margin_16"
-            android:layout_marginTop="@dimen/default_margin_16"
-            android:background="@drawable/bg_btn_empty"
-            android:padding="@dimen/default_margin_8"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/barrier"
+            android:text="@string/label_password"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintBottom_toBottomOf="@+id/etPasswordLabel"
+            app:layout_constraintEnd_toStartOf="@+id/etPasswordLabel"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintTop_toBottomOf="@+id/ivParticipantAddAvatar"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/etPasswordLabel" />
+
+        <EditText
+            android:id="@+id/etPasswordLabel"
+            style="@style/EditText.Theme"
+            android:layout_width="0dp"
+            android:inputType="textPassword"
+            android:layout_marginTop="@dimen/default_margin_16"
+            app:layout_constraintHorizontal_weight="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tvPasswordLabel"
+            app:layout_constraintTop_toBottomOf="@+id/etLogin" />
 
         <TextView
-            android:id="@+id/tvLastNameLabel"
+            android:id="@+id/tvRepeatPasswordLabel"
             style="@style/Text.Hint.16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/label_last_name"
-            app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintBottom_toBottomOf="@+id/etLastName"
-            app:layout_constraintEnd_toStartOf="@+id/barrier"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/etLastName" />
-
-        <EditText
-            android:id="@+id/etLastName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_margin_16"
-            android:layout_marginTop="@dimen/default_margin_16"
-            android:background="@drawable/bg_btn_empty"
-            android:padding="@dimen/default_margin_8"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/label_repeat_password"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintBottom_toBottomOf="@+id/etRepeatPasswordLabel"
+            app:layout_constraintEnd_toStartOf="@+id/etRepeatPasswordLabel"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/barrier"
-            app:layout_constraintTop_toBottomOf="@+id/etFirstName"/>
-
-        <TextView
-            android:id="@+id/tvBirthDateLabel"
-            style="@style/Text.Hint.16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/label_birthday"
-            app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintBottom_toBottomOf="@+id/etBirthDate"
-            app:layout_constraintEnd_toStartOf="@+id/barrier"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/etBirthDate" />
+            app:layout_constraintTop_toTopOf="@+id/etRepeatPasswordLabel" />
 
         <EditText
-            android:id="@+id/etBirthDate"
+            android:id="@+id/etRepeatPasswordLabel"
+            style="@style/EditText.Theme"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_margin_16"
+            android:inputType="textPassword"
             android:layout_marginTop="@dimen/default_margin_16"
-            android:background="@drawable/bg_btn_empty"
-            android:padding="@dimen/default_margin_8"
-            android:drawableStart="@drawable/ic_certain_date"
-            android:drawableTint="@color/colorPrimary"
+            app:layout_constraintHorizontal_weight="3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/barrier"
-            app:layout_constraintTop_toBottomOf="@+id/etLastName"/>
+            app:layout_constraintStart_toEndOf="@+id/tvRepeatPasswordLabel"
+            app:layout_constraintTop_toBottomOf="@+id/etPasswordLabel" />
 
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/barrier"
+        <Button
+            android:id="@+id/btnSignUpRegistration"
+            style="@style/Button.Full"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:barrierDirection="end"
-            app:constraint_referenced_ids="tvFirstNameLabel, tvLastNameLabel"
-            tools:layout_editor_absoluteX="411dp" />
+            android:layout_marginTop="@dimen/default_margin_24"
+            android:paddingStart="@dimen/default_margin_8"
+            android:paddingEnd="@dimen/default_margin_8"
+            android:text="@string/btn_sign_up"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etRepeatPasswordLabel" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

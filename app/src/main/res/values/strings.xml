@@ -36,10 +36,11 @@
     <string name="label_last_name">Фамилия</string>
     <string name="label_birthday">Дата рождения</string>
     <string name="label_city">Город</string>
-    <string name="label_sport_club">Спортивный клуб</string>
+    <string name="label_sport_club">Спортклуб</string>
     <string name="label_email">Email</string>
     <string name="label_login">Логин</string>
     <string name="label_password">Пароль</string>
+    <string name="label_repeat_password">Повторите пароль</string>
 
     <string name="placeholder_coordinates">%1$s, %2$s</string>
     <string name="placeholder_count_media" translatable="false">%1$d/%2$d</string>
@@ -58,6 +59,7 @@
     <string name="toolbar_title_event_details">Соревнование</string>
     <string name="toolbar_title_enter">Вход</string>
     <string name="toolbar_title_registration">Регистрация</string>
+    <string name="toolbar_title_account">Личная информация</string>
 
     <string-array name="spinner_type_critical">
         <item>Низкая</item>

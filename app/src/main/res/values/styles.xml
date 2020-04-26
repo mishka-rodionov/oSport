@@ -176,7 +176,10 @@
 
     <style name="EditText.Theme">
         <item name="android:theme">@style/AppTheme.EditText</item>
-<!--        <item name="android:background">@drawable/bg_edit_text_login</item>-->
+        <item name="android:background">@drawable/bg_btn_empty</item>
+        <item name="android:layout_height">@dimen/edit_text_height</item>
+        <item name="android:padding">@dimen/default_margin_8</item>
+        <item name="android:inputType">text</item>
     </style>
 
     <style name="EditText.Login">
