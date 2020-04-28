@@ -122,6 +122,12 @@
         <item name="android:textSize">@dimen/font_20</item>
     </style>
 
+    <style name="Text.Label">
+        <item name="android:textSize">@dimen/font_24</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
     <style name="Text.Bold.Primary">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textAllCaps">true</item>
@@ -130,8 +136,17 @@
     <style name="Button" parent="Widget.AppCompat.Button">
         <item name="android:layout_height">@dimen/button_height</item>
         <item name="android:layout_width">match_parent</item>
-<!--        <item name="android:background">@drawable/bg_button_login</item>-->
+        <item name="android:background">@drawable/bg_btn_empty</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:foreground">?selectableItemBackgroundBorderless</item>
         <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="paddingStart">@dimen/default_margin_8</item>
+        <item name="paddingEnd">@dimen/default_margin_8</item>
+    </style>
+
+    <style name="Button.Full" parent="Button">
+        <item name="android:background">@drawable/bg_btn_full</item>
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
@@ -161,7 +176,10 @@
 
     <style name="EditText.Theme">
         <item name="android:theme">@style/AppTheme.EditText</item>
-<!--        <item name="android:background">@drawable/bg_edit_text_login</item>-->
+        <item name="android:background">@drawable/bg_btn_empty</item>
+        <item name="android:layout_height">@dimen/edit_text_height</item>
+        <item name="android:padding">@dimen/default_margin_8</item>
+        <item name="android:inputType">text</item>
     </style>
 
     <style name="EditText.Login">

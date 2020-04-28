@@ -60,9 +60,11 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentL
         }
 
         setToolbarTitle()
-
+        initViews()
         observeBaseLiveData()
     }
+
+    abstract fun initViews()
 
     open fun observeBaseLiveData() {
         screenViewModel?.let { vm ->
@@ -80,7 +82,7 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentL
 
     private fun handleFragmentNavigation(event: NavigationEvent) {
         when (event) {
-            NavigationEvent.ClearStack -> fragmentNavigation?.clearStack()
+            ClearStack -> fragmentNavigation?.clearStack()
             Exit -> fragmentNavigation?.popFragment()
             is SwitchTab -> fragmentNavigation?.switchTab(event.tabPosition)
             is PopFragments -> fragmentNavigation?.popFragments(event.count)

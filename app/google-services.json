@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "86148948937",
+    "firebase_url": "https://osport.firebaseio.com",
+    "project_id": "osport",
+    "storage_bucket": "osport.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:86148948937:android:c233d2e2fdefaa60e8be18",
+        "android_client_info": {
+          "package_name": "com.rodionov.osport"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "86148948937-9571vpsabvt8ooa75is17vjopic9qv3a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlHJY98b6AEZGs1R7Y5w4aoA38-DTW7hg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "86148948937-9571vpsabvt8ooa75is17vjopic9qv3a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
