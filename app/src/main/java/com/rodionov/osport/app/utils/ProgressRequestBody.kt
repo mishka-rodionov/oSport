@@ -5,6 +5,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import okio.BufferedSink
 import java.io.File
@@ -19,7 +20,7 @@ class ProgressRequestBody(
     private val mainUiScope by lazy { CoroutineScope(SupervisorJob() + Dispatchers.Main) }
 
     override fun contentType(): MediaType? {
-        return MediaType.parse("multipart/form-data")
+        return "multipart/form-data".toMediaTypeOrNull()
     }
 
     @Throws(IOException::class)
