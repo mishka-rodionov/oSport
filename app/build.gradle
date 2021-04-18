@@ -6,21 +6,21 @@ apply plugin: "kotlin-kapt"
 
 apply plugin: "kotlin-android-extensions"
 
-apply plugin: "com.google.gms.google-services"
-
-apply plugin: "com.google.firebase.crashlytics"
+//apply plugin: "com.google.gms.google-services"
+//
+//apply plugin: "com.google.firebase.crashlytics"
 
 def API_ENDPOINT = "API_ENDPOINT"
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion DefaultConfig.compileSdk
+    buildToolsVersion DefaultConfig.buildTools
     defaultConfig {
-        applicationId "com.rodionov.osport"
-        minSdkVersion 23
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        applicationId App.applicationId
+        minSdkVersion DefaultConfig.minSdk
+        targetSdkVersion DefaultConfig.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         compileOptions {
@@ -36,18 +36,18 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", API_ENDPOINT, '"https://orghim.profsoft.online/"'
+            buildConfigField "String", API_ENDPOINT, '"https://"'
         }
         debug {
             debuggable true
-            buildConfigField "String", API_ENDPOINT, '"https://orghim.profsoft.online/"'
+            buildConfigField "String", API_ENDPOINT, '"https://"'
         }
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0'
     testImplementation 'junit:junit:4.12'
