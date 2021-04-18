@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ncapdevi.fragnav.FragNavController
 import com.ncapdevi.fragnav.FragNavController.Companion.TAB1
@@ -33,6 +36,11 @@ class MainActivity : BaseActivity(R.layout.activity_main), FragmentNavigation,
     override val screenViewModel: BaseViewModel?
         get() = super.screenViewModel
 
+    lateinit var appBarConfiguration: AppBarConfiguration
+
+    lateinit var host: NavHostFragment
+    lateinit var navController: NavController
+
     private val fragNavController by lazy {
         FragNavController(supportFragmentManager, R.id.container)
     }
@@ -42,10 +50,6 @@ class MainActivity : BaseActivity(R.layout.activity_main), FragmentNavigation,
         R.id.tab_events to EventCalendarFragment(),
         R.id.tab_profile to LoginFragment()
     )
-
-    override fun initInterface(savedInstanceState: Bundle?) {
-        setupBottomNavigation(savedInstanceState)
-    }
 
     private fun setupBottomNavigation(saveInstanceState: Bundle?) {
         val navigationItemListener = BottomNavigationView.OnNavigationItemSelectedListener {

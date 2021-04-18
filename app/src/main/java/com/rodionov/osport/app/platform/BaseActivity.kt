@@ -12,6 +12,11 @@ import android.widget.EditText
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.orgkhim.tm.app.extensions.getCompatColor
 import com.rodionov.osport.R
@@ -35,7 +40,7 @@ abstract class BaseActivity(@LayoutRes val layoutResId: Int) : AppCompatActivity
 
     private var snackBar: Snackbar? = null
 
-    abstract fun initInterface(savedInstanceState: Bundle?)
+//    abstract fun initInterface(savedInstanceState: Bundle?)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,8 +49,22 @@ abstract class BaseActivity(@LayoutRes val layoutResId: Int) : AppCompatActivity
         this.setStatusBarColor(this.getCompatColor(statusBarColor))
         this.setStatusBarLightMode(statusBarLightMode)
 
-        initInterface(savedInstanceState)
         observeBaseLiveData()
+    }
+
+    abstract fun initViews()
+
+    abstract fun initToolbar()
+
+    protected fun setupNavigationMenu(navController: NavController, navViewId: Int) {
+        val navView = findViewById<NavigationView>(navViewId)
+        navView?.setupWithNavController(navController)
+    }
+
+    protected fun setupActionBar(navController: NavController,
+                                 appBarConfig : AppBarConfiguration
+    ) {
+        setupActionBarWithNavController(navController, appBarConfig)
     }
 
     open fun observeBaseLiveData() {
@@ -91,8 +110,6 @@ abstract class BaseActivity(@LayoutRes val layoutResId: Int) : AppCompatActivity
                 .show(supportFragmentManager, CommonDialog.TAG)
         }
     }
-
-    open fun loadData() {}
 
     open fun handleOnlyFailure(state: State?) {
         if (state is State.Error) {
