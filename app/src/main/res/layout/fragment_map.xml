@@ -6,7 +6,7 @@
 
     <include
         android:id="@+id/toolbarMapFragment"
-        layout="@layout/toolbar_with_icon" />
+        layout="@layout/toolbar" />
 
     <fragment
         android:id="@+id/mapView"

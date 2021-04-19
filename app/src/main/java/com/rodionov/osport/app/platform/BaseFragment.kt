@@ -16,7 +16,6 @@ import com.rodionov.osport.app.platform.NavigationEvent.*
 import com.rodionov.osport.R
 import com.rodionov.osport.app.extensions.*
 import kotlinx.android.synthetic.main.layout_progress.view.*
-import kotlinx.android.synthetic.main.toolbar_with_icon.*
 
 
 /**
@@ -119,30 +118,30 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentL
     }
 
     private fun setToolbarTitle() {
-        tvToolbarTitle?.text = toolbarTitle?.let { resources.getString(it) }
-        ivFilterRequests?.isVisible = toolbarIconFilterVisible
-
-        if (toolbarTextButtonConfirm != null) {
-            tvButtonConfirm?.text = resources.getString(toolbarTextButtonConfirm!!)
-        } else {
-            tvButtonConfirm?.gone()
-        }
-
-        if (toolbarDrawableClose != null) {
-            ivClose?.setImageDrawable(resources.getDrawable(toolbarDrawableClose!!, null))
-        } else {
-            ivClose?.gone()
-        }
-
-        if (!statusBarLightMode) {
-            toolbar?.setBackgroundColor(resources.getColor(R.color.colorPrimary, null))
-            tvToolbarTitle?.style(R.style.Text_Bold_White_20)
-            viewToolbar?.setBackgroundColor(resources.getColor(R.color.colorWhiteTransparent, null))
-        }
-
-        ivClose?.setOnClickListener {
-            fragmentNavigation?.popFragment()
-        }
+//        tvToolbarTitle?.text = toolbarTitle?.let { resources.getString(it) }
+//        ivFilterRequests?.isVisible = toolbarIconFilterVisible
+//
+//        if (toolbarTextButtonConfirm != null) {
+//            tvButtonConfirm?.text = resources.getString(toolbarTextButtonConfirm!!)
+//        } else {
+//            tvButtonConfirm?.gone()
+//        }
+//
+//        if (toolbarDrawableClose != null) {
+//            ivClose?.setImageDrawable(resources.getDrawable(toolbarDrawableClose!!, null))
+//        } else {
+//            ivClose?.gone()
+//        }
+//
+//        if (!statusBarLightMode) {
+//            toolbar?.setBackgroundColor(resources.getColor(R.color.colorPrimary, null))
+//            tvToolbarTitle?.style(R.style.Text_Bold_White_20)
+//            viewToolbar?.setBackgroundColor(resources.getColor(R.color.colorWhiteTransparent, null))
+//        }
+//
+//        ivClose?.setOnClickListener {
+//            fragmentNavigation?.popFragment()
+//        }
     }
 
     internal fun notify(@StringRes title: Int, @StringRes message: Int) {

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/profile_navigation_graph"
+    app:startDestination="@id/profileFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.rodionov.osport.presentation.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.rodionov.osport.presentation.login.LoginFragment"
+        android:label="LoginFragment" />
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.rodionov.osport.presentation.registration.RegistrationFragment"
+        android:label="RegistrationFragment" />
+</navigation>

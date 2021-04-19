@@ -16,6 +16,8 @@ import androidx.navigation.NavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.viewbinding.ViewBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.orgkhim.tm.app.extensions.getCompatColor
@@ -24,10 +26,11 @@ import com.rodionov.osport.app.extensions.observeEvent
 import com.rodionov.osport.app.extensions.setStatusBarColor
 import com.rodionov.osport.app.extensions.setStatusBarLightMode
 import com.rodionov.osport.app.extensions.showToast
+import com.rodionov.osport.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.layout_progress.*
 
 
-abstract class BaseActivity(@LayoutRes val layoutResId: Int) : AppCompatActivity() {
+abstract class BaseActivity() : AppCompatActivity() {
 
     open val screenViewModel: BaseViewModel?
         get() = null
@@ -40,32 +43,38 @@ abstract class BaseActivity(@LayoutRes val layoutResId: Int) : AppCompatActivity
 
     private var snackBar: Snackbar? = null
 
+    protected lateinit var binding: ViewBinding
+
 //    abstract fun initInterface(savedInstanceState: Bundle?)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layoutResId)
+        binding = bindingInflater()
+        setContentView(binding.root)
 
         this.setStatusBarColor(this.getCompatColor(statusBarColor))
         this.setStatusBarLightMode(statusBarLightMode)
 
+        initToolbar()
+        initViews()
         observeBaseLiveData()
     }
+
+    abstract fun bindingInflater(): ViewBinding
 
     abstract fun initViews()
 
     abstract fun initToolbar()
 
-    protected fun setupNavigationMenu(navController: NavController, navViewId: Int) {
-        val navView = findViewById<NavigationView>(navViewId)
-        navView?.setupWithNavController(navController)
+    protected fun setupNavigationMenu(navController: NavController, bottomNavigationView: BottomNavigationView) {
+        bottomNavigationView.setupWithNavController(navController)
     }
 
-    protected fun setupActionBar(navController: NavController,
-                                 appBarConfig : AppBarConfiguration
-    ) {
-        setupActionBarWithNavController(navController, appBarConfig)
-    }
+//    protected fun setupActionBar(navController: NavController,
+//                                 appBarConfig : AppBarConfiguration
+//    ) {
+//        setupActionBarWithNavController(navController, appBarConfig)
+//    }
 
     open fun observeBaseLiveData() {
         screenViewModel?.let { vm ->
