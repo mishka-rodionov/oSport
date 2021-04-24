@@ -11,7 +11,7 @@ object DefaultConfig {
     const val minSdk = 21
     const val targetSdk = 30
     const val compileSdk = 30
-    const val buildTools = "29.0.3"
+    const val buildTools = "30.0.2"
 }
 
 object Versions {
