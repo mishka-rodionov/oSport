@@ -5,6 +5,8 @@ import android.view.View
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
+import androidx.navigation.NavGraph
+import androidx.navigation.NavigatorProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -64,7 +66,7 @@ class MainActivity : BaseActivity(){
         setupObserver()
         setupBottomNavMenu(navController = navController)
         appBarConfiguration =
-            AppBarConfiguration(navController.graph, drawerLayout = null)
+            AppBarConfiguration(setOf(R.id.profileFragment, R.id.eventCenterFragment, R.id.eventNewsFragment), drawerLayout = null)
 //        setupActionBar(navController, appBarConfiguration)
     }
 
