@@ -12,6 +12,13 @@ import android.widget.EditText
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import androidx.viewbinding.ViewBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.orgkhim.tm.app.extensions.getCompatColor
 import com.rodionov.osport.R
@@ -19,10 +26,11 @@ import com.rodionov.osport.app.extensions.observeEvent
 import com.rodionov.osport.app.extensions.setStatusBarColor
 import com.rodionov.osport.app.extensions.setStatusBarLightMode
 import com.rodionov.osport.app.extensions.showToast
+import com.rodionov.osport.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.layout_progress.*
 
 
-abstract class BaseActivity(@LayoutRes val layoutResId: Int) : AppCompatActivity() {
+abstract class BaseActivity() : AppCompatActivity() {
 
     open val screenViewModel: BaseViewModel?
         get() = null
@@ -35,18 +43,38 @@ abstract class BaseActivity(@LayoutRes val layoutResId: Int) : AppCompatActivity
 
     private var snackBar: Snackbar? = null
 
-    abstract fun initInterface(savedInstanceState: Bundle?)
+    protected lateinit var binding: ViewBinding
+
+//    abstract fun initInterface(savedInstanceState: Bundle?)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layoutResId)
+        binding = bindingInflater()
+        setContentView(binding.root)
 
         this.setStatusBarColor(this.getCompatColor(statusBarColor))
         this.setStatusBarLightMode(statusBarLightMode)
 
-        initInterface(savedInstanceState)
+        initToolbar()
+        initViews()
         observeBaseLiveData()
     }
+
+    abstract fun bindingInflater(): ViewBinding
+
+    abstract fun initViews()
+
+    abstract fun initToolbar()
+
+    protected fun setupNavigationMenu(navController: NavController, bottomNavigationView: BottomNavigationView) {
+        bottomNavigationView.setupWithNavController(navController)
+    }
+
+//    protected fun setupActionBar(navController: NavController,
+//                                 appBarConfig : AppBarConfiguration
+//    ) {
+//        setupActionBarWithNavController(navController, appBarConfig)
+//    }
 
     open fun observeBaseLiveData() {
         screenViewModel?.let { vm ->
@@ -91,8 +119,6 @@ abstract class BaseActivity(@LayoutRes val layoutResId: Int) : AppCompatActivity
                 .show(supportFragmentManager, CommonDialog.TAG)
         }
     }
-
-    open fun loadData() {}
 
     open fun handleOnlyFailure(state: State?) {
         if (state is State.Error) {

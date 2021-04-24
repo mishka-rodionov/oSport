@@ -50,7 +50,7 @@
     <string name="dialog_message_request_location">Ваша текущая геопозиция будет отображена на карте и использована для предоставления геометки при создании заявки</string>
 
     <string name="tab_news_title">Новости</string>
-    <string name="tab_event_calendar_title">Календарь</string>
+    <string name="tab_event_calendar_title">Центр</string>
     <string name="tab_profile_title">Профиль</string>
 
     <string name="toolbar_title_news">Новости</string>
