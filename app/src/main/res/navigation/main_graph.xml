@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/startFragment"
+    android:id="@+id/main_graph">
+
+    <include app:graph="@navigation/event_news_graph"/>
+
+    <include app:graph="@navigation/event_center_graph"/>
+
+    <include app:graph="@navigation/profile_navigation_graph"/>
+
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.rodionov.osport.presentation.start.StartFragment"
+        android:label="StartFragment" >
+        <action
+            android:id="@+id/action_startFragment_to_event_news_graph"
+            app:destination="@id/event_news_graph" />
+    </fragment>
+
+
+</navigation>
