@@ -1,40 +1,16 @@
 package com.rodionov.osport.presentation.main
 
 import android.os.Bundle
-import android.view.View
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
-import androidx.navigation.NavGraph
-import androidx.navigation.NavigatorProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.viewbinding.ViewBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.ncapdevi.fragnav.FragNavController
-import com.ncapdevi.fragnav.FragNavController.Companion.TAB1
-import com.ncapdevi.fragnav.FragNavController.Companion.TAB2
-import com.ncapdevi.fragnav.FragNavController.Companion.TAB3
-import com.ncapdevi.fragnav.FragNavSwitchController
-import com.ncapdevi.fragnav.FragNavTransactionOptions
-import com.ncapdevi.fragnav.tabhistory.UniqueTabHistoryStrategy
-import com.ncapdevi.fragnav.tabhistory.UnlimitedTabHistoryController
-import com.ncapdevi.fragnav.tabhistory.UnlimitedTabHistoryStrategy
 import com.rodionov.osport.R
-import com.rodionov.osport.app.extensions.gone
-import com.rodionov.osport.app.extensions.show
 import com.rodionov.osport.app.platform.BaseActivity
-import com.rodionov.osport.app.platform.BaseFragment
 import com.rodionov.osport.app.platform.BaseViewModel
-import com.rodionov.osport.app.platform.FragmentNavigation
 import com.rodionov.osport.databinding.ActivityMainBinding
-import com.rodionov.osport.presentation.eventcalendar.EventCalendarFragment
-import com.rodionov.osport.presentation.login.LoginFragment
-import com.rodionov.osport.presentation.news.NewsFragment
-import com.rodionov.osport.presentation.profile.ProfileFragment
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(){
 
