@@ -69,8 +69,6 @@ dependencies {
 //    implementation "com.google.android.gms:play-services-location:17.0.0"
 
     //Navigation
-    implementation "com.ncapdevi:frag-nav:3.2.0"
-    implementation "com.aurelhubert:ahbottomnavigation:2.3.4"
     implementation Libs.navigation_fragment
     implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
 
@@ -122,9 +120,6 @@ dependencies {
 
     //PageIndicatorView
     implementation "com.github.adrielcafe:PageIndicatorView:1.0.6"
-
-    //Threetenabp
-    implementation "com.jakewharton.threetenabp:threetenabp:1.2.1"
 
     //Keyboard Listener
     implementation "net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.3.0"
