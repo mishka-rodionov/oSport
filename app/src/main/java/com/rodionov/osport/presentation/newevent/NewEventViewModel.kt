@@ -7,7 +7,6 @@ import com.rodionov.osport.presentation.map.MapFragment
 class NewEventViewModel : BaseViewModel() {
 
     fun navigateToMap() {
-        navigate(NavigationEvent.PushFragment(MapFragment()))
     }
 
 }
