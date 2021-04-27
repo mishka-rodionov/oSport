@@ -68,11 +68,11 @@ abstract class BaseActivity: AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
     }
 
-//    protected fun setupActionBar(navController: NavController,
-//                                 appBarConfig : AppBarConfiguration
-//    ) {
-//        setupActionBarWithNavController(navController, appBarConfig)
-//    }
+    protected fun setupActionBar(navController: NavController,
+                                 appBarConfig : AppBarConfiguration
+    ) {
+        setupActionBarWithNavController(navController, appBarConfig)
+    }
 
     open fun observeBaseLiveData() {
         screenViewModel?.let { vm ->

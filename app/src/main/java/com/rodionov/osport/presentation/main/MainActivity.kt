@@ -1,6 +1,7 @@
 package com.rodionov.osport.presentation.main
 
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -33,6 +34,9 @@ class MainActivity : BaseActivity(){
     }
 
     override fun initToolbar() {
+        setSupportActionBar((binding as ActivityMainBinding).toolbarMain.toolbar)
+        supportActionBar?.title = ""
+        supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 
     override fun initViews() {
@@ -43,7 +47,7 @@ class MainActivity : BaseActivity(){
         setupBottomNavMenu(navController = navController)
         appBarConfiguration =
             AppBarConfiguration(setOf(R.id.profileFragment, R.id.eventCenterFragment, R.id.eventNewsFragment), drawerLayout = null)
-//        setupActionBar(navController, appBarConfiguration)
+        setupActionBar(navController, appBarConfiguration)
     }
 
     private fun setupObserver() {}

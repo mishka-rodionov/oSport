@@ -18,9 +18,6 @@ class RegistrationFragment : BaseFragment(){
     override fun bindingInflater() = FragmentRegistrationBinding.inflate(layoutInflater)
 
     override fun initViews() {
-        btnSignUpRegistration.setOnClickListener {
-            viewModel.navigateToAccount()
-        }
     }
 
 }
