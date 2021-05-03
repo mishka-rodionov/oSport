@@ -30,7 +30,7 @@ import com.rodionov.osport.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.layout_progress.*
 
 
-abstract class BaseActivity() : AppCompatActivity() {
+abstract class BaseActivity: AppCompatActivity() {
 
     open val screenViewModel: BaseViewModel?
         get() = null
@@ -44,8 +44,6 @@ abstract class BaseActivity() : AppCompatActivity() {
     private var snackBar: Snackbar? = null
 
     protected lateinit var binding: ViewBinding
-
-//    abstract fun initInterface(savedInstanceState: Bundle?)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,11 +68,11 @@ abstract class BaseActivity() : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
     }
 
-//    protected fun setupActionBar(navController: NavController,
-//                                 appBarConfig : AppBarConfiguration
-//    ) {
-//        setupActionBarWithNavController(navController, appBarConfig)
-//    }
+    protected fun setupActionBar(navController: NavController,
+                                 appBarConfig : AppBarConfiguration
+    ) {
+        setupActionBarWithNavController(navController, appBarConfig)
+    }
 
     open fun observeBaseLiveData() {
         screenViewModel?.let { vm ->

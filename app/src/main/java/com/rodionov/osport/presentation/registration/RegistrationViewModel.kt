@@ -7,7 +7,6 @@ import com.rodionov.osport.presentation.account.AccountFragment
 class RegistrationViewModel : BaseViewModel() {
 
     fun navigateToAccount() {
-        navigate(NavigationEvent.PushFragment(AccountFragment()))
     }
 
 }

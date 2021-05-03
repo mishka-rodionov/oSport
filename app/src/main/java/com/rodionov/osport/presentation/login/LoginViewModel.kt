@@ -9,11 +9,9 @@ import com.rodionov.osport.presentation.registration.RegistrationFragment
 class LoginViewModel : BaseViewModel() {
 
     fun navigateToProfile() {
-        navigate(NavigationEvent.PushFragment(ProfileFragment()))
     }
 
     fun navigateToRegistration() {
-        navigate(NavigationEvent.PushFragment(RegistrationFragment()))
     }
 
 }

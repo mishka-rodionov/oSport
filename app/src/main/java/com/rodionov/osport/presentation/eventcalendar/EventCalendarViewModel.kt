@@ -7,7 +7,6 @@ import com.rodionov.osport.presentation.eventdetails.EventDetailsFragment
 class EventCalendarViewModel : BaseViewModel() {
 
     fun navigateToEvent() {
-        navigate(NavigationEvent.PushFragment(EventDetailsFragment()))
     }
 
 }
