@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.toBitmap
 import androidx.viewbinding.ViewBinding
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -14,11 +15,14 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.rodionov.osport.R
 import com.rodionov.osport.app.platform.BaseFragment
 import com.rodionov.osport.app.platform.BaseViewModel
+import com.rodionov.osport.databinding.FragmentAccountBinding
 import com.rodionov.osport.databinding.FragmentMapBinding
 import com.rodionov.osport.presentation.common.ScrollMapFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MapFragment : BaseFragment(), OnMapReadyCallback {
+class MapFragment : BaseFragment(R.layout.fragment_map), OnMapReadyCallback {
+
+    private val binding: FragmentMapBinding by viewBinding()
 
     override val toolbarTitle = R.string.toolbar_title_map
 
@@ -29,8 +33,6 @@ class MapFragment : BaseFragment(), OnMapReadyCallback {
     override val screenViewModel by lazy { viewModel }
 
     private var map: GoogleMap? = null
-
-    override fun bindingInflater() = FragmentMapBinding.inflate(layoutInflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

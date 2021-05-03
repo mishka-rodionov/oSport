@@ -166,4 +166,7 @@ dependencies {
     //DataStore
     implementation "androidx.datastore:datastore-preferences:1.0.0-beta01"
 
+    //ViewBindingDelegate
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.4.4'
+
 }
