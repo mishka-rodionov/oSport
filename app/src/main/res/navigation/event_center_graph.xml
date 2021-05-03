@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/event_center_graph"
+    app:startDestination="@id/eventCenterFragment">
+
+    <fragment
+        android:id="@+id/eventCenterFragment"
+        android:name="com.rodionov.osport.presentation.event_center.EventCenterFragment"
+        android:label="EventCenterFragment" />
+</navigation>

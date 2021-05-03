@@ -2,110 +2,69 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/default_margin_16"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/toolbarAccount"
-        layout="@layout/toolbar_with_icon" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilUserLastName"
+        style="@style/TextInputLayoutOutlined"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="@string/hint_last_name"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/colorError">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUserLastName"
+            style="@style/EditTextOutlined"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilUserFirstName"
+        style="@style/TextInputLayoutOutlined"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilUserLastName"
+        android:hint="@string/hint_first_name"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/colorError">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUserFirstName"
+            style="@style/EditTextOutlined"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilUserPhone"
+        style="@style/TextInputLayoutOutlined"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilUserFirstName"
+        android:hint="@string/hint_phone"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/colorError">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUserPhone"
+            style="@style/EditTextOutlined"
+            android:inputType="phone" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnRegistration"
+        style="@style/Button"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_margin_16"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:ellipsize="end"
+        android:text="@string/btn_sign_up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarAccount">
-
-        <TextView
-            android:id="@+id/tvLoginLabel"
-            style="@style/Text.Hint.16"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/label_login"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintBottom_toBottomOf="@+id/etLogin"
-            app:layout_constraintEnd_toStartOf="@+id/etLogin"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/etLogin" />
-
-        <EditText
-            android:id="@+id/etLogin"
-            style="@style/EditText.Theme"
-            android:layout_width="0dp"
-            app:layout_constraintHorizontal_weight="3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tvLoginLabel"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvPasswordLabel"
-            style="@style/Text.Hint.16"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/label_password"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintBottom_toBottomOf="@+id/etPasswordLabel"
-            app:layout_constraintEnd_toStartOf="@+id/etPasswordLabel"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/etPasswordLabel" />
-
-        <EditText
-            android:id="@+id/etPasswordLabel"
-            style="@style/EditText.Theme"
-            android:layout_width="0dp"
-            android:inputType="textPassword"
-            android:layout_marginTop="@dimen/default_margin_16"
-            app:layout_constraintHorizontal_weight="3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tvPasswordLabel"
-            app:layout_constraintTop_toBottomOf="@+id/etLogin" />
-
-        <TextView
-            android:id="@+id/tvRepeatPasswordLabel"
-            style="@style/Text.Hint.16"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/label_repeat_password"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintBottom_toBottomOf="@+id/etRepeatPasswordLabel"
-            app:layout_constraintEnd_toStartOf="@+id/etRepeatPasswordLabel"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/etRepeatPasswordLabel" />
-
-        <EditText
-            android:id="@+id/etRepeatPasswordLabel"
-            style="@style/EditText.Theme"
-            android:layout_width="0dp"
-            android:inputType="textPassword"
-            android:layout_marginTop="@dimen/default_margin_16"
-            app:layout_constraintHorizontal_weight="3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tvRepeatPasswordLabel"
-            app:layout_constraintTop_toBottomOf="@+id/etPasswordLabel" />
-
-        <Button
-            android:id="@+id/btnSignUpRegistration"
-            style="@style/Button.Full"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_24"
-            android:paddingStart="@dimen/default_margin_8"
-            android:paddingEnd="@dimen/default_margin_8"
-            android:text="@string/btn_sign_up"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etRepeatPasswordLabel" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toBottomOf="@id/tilUserPhone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

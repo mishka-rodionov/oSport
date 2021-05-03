@@ -11,6 +11,82 @@
         <item name="android:splitMotionEvents">false</item>
     </style>
 
+    <style name="Button" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:letterSpacing">0</item>
+        <!--        <item name="android:fontFamily">sans-serif</item>-->
+        <item name="android:textSize">@dimen/font_16</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:foreground">?selectableItemBackgroundBorderless</item>
+        <item name="android:paddingStart">@dimen/default_margin_8</item>
+        <item name="android:paddingEnd">@dimen/default_margin_8</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="ButtonOutlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:letterSpacing">0</item>
+
+        <item name="android:background">@drawable/bg_outlined_button</item>
+        <!--        <item name="android:fontFamily">sans-serif</item>-->
+        <item name="android:textSize">@dimen/font_16</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:foreground">?selectableItemBackgroundBorderless</item>
+        <item name="android:paddingStart">@dimen/default_margin_8</item>
+        <item name="android:paddingEnd">@dimen/default_margin_8</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="strokeWidth">@dimen/btn_border</item>
+        <item name="strokeColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="TextInputLayoutOutlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">@color/colorHint</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="boxBackgroundColor">@color/colorWhite</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="helperTextEnabled">true</item>
+        <item name="helperTextTextColor">@color/colorHint</item>
+<!--        <item name="startIconTint">@color/colorHighlight</item>-->
+    </style>
+
+    <style name="EditTextOutlined" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+    <style name="TextInputLayoutExposed" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">@color/colorHint</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxBackgroundColor">@color/colorWhite</item>
+        <item name="helperTextEnabled">true</item>
+        <item name="helperTextTextColor">@color/colorHint</item>
+<!--        <item name="startIconTint">@color/colorHighlight</item>-->
+    </style>
+
+    <style name="AutocompleteViewOutlined" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimaryDark">@color/colorPrimary</item>
 <!--        <item name="android:windowBackground">@drawable/bg_splash</item>-->
@@ -133,17 +209,17 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
-    <style name="Button" parent="Widget.AppCompat.Button">
-        <item name="android:layout_height">@dimen/button_height</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:background">@drawable/bg_btn_empty</item>
-        <item name="android:elevation">0dp</item>
-        <item name="android:foreground">?selectableItemBackgroundBorderless</item>
-        <item name="android:textSize">@dimen/font_14</item>
-        <item name="android:textColor">@color/colorPrimary</item>
-        <item name="paddingStart">@dimen/default_margin_8</item>
-        <item name="paddingEnd">@dimen/default_margin_8</item>
-    </style>
+<!--    <style name="Button" parent="Widget.AppCompat.Button">-->
+<!--        <item name="android:layout_height">@dimen/button_height</item>-->
+<!--        <item name="android:layout_width">match_parent</item>-->
+<!--        <item name="android:background">@drawable/bg_btn_empty</item>-->
+<!--        <item name="android:elevation">0dp</item>-->
+<!--        <item name="android:foreground">?selectableItemBackgroundBorderless</item>-->
+<!--        <item name="android:textSize">@dimen/font_14</item>-->
+<!--        <item name="android:textColor">@color/colorPrimary</item>-->
+<!--        <item name="paddingStart">@dimen/default_margin_8</item>-->
+<!--        <item name="paddingEnd">@dimen/default_margin_8</item>-->
+<!--    </style>-->
 
     <style name="Button.Full" parent="Button">
         <item name="android:background">@drawable/bg_btn_full</item>

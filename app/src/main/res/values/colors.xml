@@ -18,4 +18,5 @@
     <color name="colorNotificationBackground">#F5F5F5</color>
     <color name="colorMediaBackground">#000000</color>
     <color name="colorNewsPlaceholder">#B4D5C3</color>
+    <color name="colorButtonBackground">@color/colorPrimary</color>
 </resources>

@@ -7,7 +7,6 @@ import com.rodionov.osport.presentation.newevent.NewEventFragment
 class NewsViewModel : BaseViewModel() {
 
     fun navigateToNewEvent() {
-        navigate(NavigationEvent.PushFragment(NewEventFragment()))
     }
 
 }

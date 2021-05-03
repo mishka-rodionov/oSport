@@ -2,27 +2,25 @@ package com.rodionov.osport.app.platform
 
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import com.airbnb.paris.extensions.style
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
+import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
 import com.orgkhim.tm.app.extensions.getCompatColor
 import com.rodionov.osport.app.platform.NavigationEvent.*
 import com.rodionov.osport.R
 import com.rodionov.osport.app.extensions.*
 import kotlinx.android.synthetic.main.layout_progress.view.*
-import kotlinx.android.synthetic.main.toolbar_with_icon.*
 
-
-/**
- * Base Fragment class with helper methods for handling views, handle navigation and base events.
- */
-abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentLayoutId) {
+abstract class BaseFragment(@LayoutRes layout: Int): Fragment(layout) {
 
     open val supportFragmentManager
         get() = requireActivity().supportFragmentManager
@@ -30,21 +28,22 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentL
     open val screenViewModel: BaseViewModel?
         get() = null
 
-    open val showBottomNavWhenFragmentLaunch = true
     open val statusBarColor = R.color.colorStatusBar
     open val statusBarLightMode = true
 
     open val toolbarTitle: Int? = null
-    open val toolbarTextButtonConfirm: Int? = null
     open val toolbarDrawableClose: Int? = null
-    open val toolbarIconFilterVisible: Boolean = false
 
-    private var fragmentNavigation: FragmentNavigation? = null
     private var snackBar: Snackbar? = null
+    protected var navigationController: NavController? = null
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        fragmentNavigation = context as? FragmentNavigation
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        navigationController = findNavController()
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,12 +51,6 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentL
 
         activity?.setStatusBarColor(requireActivity().getCompatColor(statusBarColor))
         activity?.setStatusBarLightMode(statusBarLightMode)
-
-        if (showBottomNavWhenFragmentLaunch) {
-            fragmentNavigation?.showBottomNavigation()
-        } else {
-            fragmentNavigation?.hideBottomNavigation()
-        }
 
         setToolbarTitle()
         initViews()
@@ -82,18 +75,16 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentL
 
     private fun handleFragmentNavigation(event: NavigationEvent) {
         when (event) {
-            ClearStack -> fragmentNavigation?.clearStack()
-            Exit -> fragmentNavigation?.popFragment()
-            is SwitchTab -> fragmentNavigation?.switchTab(event.tabPosition)
-            is PopFragments -> fragmentNavigation?.popFragments(event.count)
+            ClearStack -> navigationController
+            Exit -> navigationController?.popBackStack()
             is PushFragment -> {
-                if (event.clearStack) fragmentNavigation?.clearStack()
-                fragmentNavigation?.pushFragment(event.fragment)
+                if (event.navOptions != null)
+                    navigationController?.navigate(event.action, event.bundle, event.navOptions)
+                else
+                    navigationController?.navigate(event.action, event.bundle)
             }
         }
     }
-
-    fun exit() = fragmentNavigation?.popFragment()
 
     internal fun dialogNotAlreadyShown(tag: String) =
         supportFragmentManager.findFragmentByTag(tag) == null
@@ -119,30 +110,30 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentL
     }
 
     private fun setToolbarTitle() {
-        tvToolbarTitle?.text = toolbarTitle?.let { resources.getString(it) }
-        ivFilterRequests?.isVisible = toolbarIconFilterVisible
-
-        if (toolbarTextButtonConfirm != null) {
-            tvButtonConfirm?.text = resources.getString(toolbarTextButtonConfirm!!)
-        } else {
-            tvButtonConfirm?.gone()
-        }
-
-        if (toolbarDrawableClose != null) {
-            ivClose?.setImageDrawable(resources.getDrawable(toolbarDrawableClose!!, null))
-        } else {
-            ivClose?.gone()
-        }
-
-        if (!statusBarLightMode) {
-            toolbar?.setBackgroundColor(resources.getColor(R.color.colorPrimary, null))
-            tvToolbarTitle?.style(R.style.Text_Bold_White_20)
-            viewToolbar?.setBackgroundColor(resources.getColor(R.color.colorWhiteTransparent, null))
-        }
-
-        ivClose?.setOnClickListener {
-            fragmentNavigation?.popFragment()
-        }
+//        tvToolbarTitle?.text = toolbarTitle?.let { resources.getString(it) }
+//        ivFilterRequests?.isVisible = toolbarIconFilterVisible
+//
+//        if (toolbarTextButtonConfirm != null) {
+//            tvButtonConfirm?.text = resources.getString(toolbarTextButtonConfirm!!)
+//        } else {
+//            tvButtonConfirm?.gone()
+//        }
+//
+//        if (toolbarDrawableClose != null) {
+//            ivClose?.setImageDrawable(resources.getDrawable(toolbarDrawableClose!!, null))
+//        } else {
+//            ivClose?.gone()
+//        }
+//
+//        if (!statusBarLightMode) {
+//            toolbar?.setBackgroundColor(resources.getColor(R.color.colorPrimary, null))
+//            tvToolbarTitle?.style(R.style.Text_Bold_White_20)
+//            viewToolbar?.setBackgroundColor(resources.getColor(R.color.colorWhiteTransparent, null))
+//        }
+//
+//        ivClose?.setOnClickListener {
+//            fragmentNavigation?.popFragment()
+//        }
     }
 
     internal fun notify(@StringRes title: Int, @StringRes message: Int) {
@@ -197,11 +188,6 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentL
                     or WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
         )
     }
-
-    open fun loadData() {}
-
-    //override `true` if fragment needs custom navigation
-    open fun onBackPressed(): Boolean = false
 
     open fun handleOnlyFailure(state: State?) {
         if (state is State.Error) {

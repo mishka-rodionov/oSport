@@ -7,8 +7,8 @@ import com.rodionov.osport.presentation.newevent.NewEventFragment
 
 class ProfileViewModel: BaseViewModel() {
 
-    fun navigateToNewEvent() {
-        navigate(NavigationEvent.PushFragment(NewEventFragment()))
+    fun navigateToNewEvent(navigationEvent: NavigationEvent) {
+        navigate(navigationEvent)
     }
 
 }
