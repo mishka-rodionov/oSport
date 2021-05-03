@@ -9,12 +9,10 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
-import com.airbnb.paris.extensions.style
 import com.google.android.material.snackbar.Snackbar
 import com.orgkhim.tm.app.extensions.getCompatColor
 import com.rodionov.osport.app.platform.NavigationEvent.*
@@ -22,7 +20,7 @@ import com.rodionov.osport.R
 import com.rodionov.osport.app.extensions.*
 import kotlinx.android.synthetic.main.layout_progress.view.*
 
-abstract class BaseFragment: Fragment() {
+abstract class BaseFragment(@LayoutRes layout: Int): Fragment(layout) {
 
     open val supportFragmentManager
         get() = requireActivity().supportFragmentManager
@@ -39,16 +37,13 @@ abstract class BaseFragment: Fragment() {
     private var snackBar: Snackbar? = null
     protected var navigationController: NavController? = null
 
-    protected lateinit var binding: ViewBinding
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = bindingInflater()
         navigationController = findNavController()
-        return binding.root
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,8 +56,6 @@ abstract class BaseFragment: Fragment() {
         initViews()
         observeBaseLiveData()
     }
-
-    abstract fun bindingInflater(): ViewBinding
 
     abstract fun initViews()
 
