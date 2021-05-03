@@ -30,7 +30,7 @@ object Versions {
     const val gson = "2.8.6"
     const val lifecycle_livedata_ktx = "2.2.0"
     const val multidex = "2.0.1"
-    const val material = "1.3.0-alpha04"
+    const val material = "1.2.0-alpha02"
     const val appcompat = "1.2.0"
     const val navigation_fragment = "1.0.0"
 }

@@ -1,4 +1,4 @@
-package com.rodionov.osport.data.storage.repository
+package com.rodionov.osport.data.repository
 
 import com.rodionov.osport.domain.repository.PreferencesRepository
 

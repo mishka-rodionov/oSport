@@ -2,9 +2,69 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/default_margin_16"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilUserLastName"
+        style="@style/TextInputLayoutOutlined"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="@string/hint_last_name"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/colorError">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUserLastName"
+            style="@style/EditTextOutlined"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilUserFirstName"
+        style="@style/TextInputLayoutOutlined"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilUserLastName"
+        android:hint="@string/hint_first_name"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/colorError">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUserFirstName"
+            style="@style/EditTextOutlined"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilUserPhone"
+        style="@style/TextInputLayoutOutlined"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilUserFirstName"
+        android:hint="@string/hint_phone"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/colorError">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUserPhone"
+            style="@style/EditTextOutlined"
+            android:inputType="phone" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnRegistration"
+        style="@style/Button"
+        android:layout_width="0dp"
+        android:ellipsize="end"
+        android:text="@string/btn_sign_up"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilUserPhone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

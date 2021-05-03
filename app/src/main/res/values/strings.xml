@@ -13,21 +13,15 @@
     <string name="btn_exit">Выйти</string>
     <string name="btn_repeat">Повторить</string>
 
-    <string name="content_logo">Логотип Оргхим</string>
-    <string name="content_image_news">Изображение новости</string>
-    <string name="content_filter_requests">Фильтрация заявок</string>
-    <string name="content_close_screen">Закрыть экран</string>
-    <string name="content_select_criticality">Выбрать критичность</string>
-    <string name="content_select_type_request">Выбрать тип</string>
-    <string name="content_add_picture">Добавить фотографии</string>
-    <string name="content_profile_photo">Изображение пользователя</string>
-    <string name="content_notification">Иконка уведомления</string>
     <string name="content_connection_error">Ошибка соединения</string>
 
     <string name="hint_login">Логин</string>
     <string name="hint_password">Пароль</string>
     <string name="hint_name_request">Название</string>
     <string name="hint_description_request">Описание</string>
+    <string name="hint_last_name">Фамилия</string>
+    <string name="hint_first_name">Имя</string>
+    <string name="hint_phone">Телефон</string>
 
     <string name="label_account">Личный кабинет</string>
     <string name="label_russian_language" translatable="false">Русский</string>
@@ -45,9 +39,6 @@
     <string name="placeholder_coordinates">%1$s, %2$s</string>
     <string name="placeholder_count_media" translatable="false">%1$d/%2$d</string>
     <string name="placeholder_percentage" translatable="false">%1$d %%</string>
-
-    <string name="dialog_title_request_location">Приложение \"Оргхим\" запрашивает доступ к Вашей геопозиции</string>
-    <string name="dialog_message_request_location">Ваша текущая геопозиция будет отображена на карте и использована для предоставления геометки при создании заявки</string>
 
     <string name="tab_news_title">Новости</string>
     <string name="tab_event_calendar_title">Центр</string>

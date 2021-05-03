@@ -1,0 +1,7 @@
+package com.rodionov.osport.domain.model
+
+enum class SportRank {
+
+    FIRST_RANK, SECOND_RANK, THIRD_RANK, CANDIDATE_OF_MASTER_OF_SPORT, MASTER_OF_SPORT, HONORED_MASTER_OF_SPORT, WITHOUT_RANK
+
+}
