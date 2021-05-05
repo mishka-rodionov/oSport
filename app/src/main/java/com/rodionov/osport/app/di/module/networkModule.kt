@@ -3,6 +3,7 @@ package com.rodionov.osport.app.di.module
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.rodionov.osport.BuildConfig
+import com.rodionov.osport.data.network.UserRegistrationApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -20,6 +21,8 @@ val networkModule = module {
 
 //    single { buildApiUser(get()) }
 
+    single { buildUserRegistrationApi(get()) }
+
     single { buildJson() }
 
 }
@@ -28,6 +31,10 @@ val networkModule = module {
 //private fun buildApiUser(retrofit: Retrofit): ApiUser? {
 //    return retrofit.create(ApiUser::class.java)
 //}
+
+private fun buildUserRegistrationApi(retrofit: Retrofit): UserRegistrationApi? {
+    return retrofit.create(UserRegistrationApi::class.java)
+}
 
 private fun buildJson() = GsonBuilder().create()
 
@@ -38,10 +45,10 @@ private fun buildOkHttp(/*headerInterceptor: HeaderInterceptor, validationInterc
     okHttpClientBuilder.readTimeout(TIMEOUT, TimeUnit.SECONDS)
 
 //    if (BuildConfig.DEBUG) {
-        //Ignore for sending newRequest (because duplicate query)
-        val loggingInterceptor =
-            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-        okHttpClientBuilder.addInterceptor(loggingInterceptor)
+    //Ignore for sending newRequest (because duplicate query)
+    val loggingInterceptor =
+        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    okHttpClientBuilder.addInterceptor(loggingInterceptor)
 //       okHttpClientBuilder.addNetworkInterceptor(StethoInterceptor())
 //    }
 
