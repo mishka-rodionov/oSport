@@ -53,6 +53,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etUserPhone"
             style="@style/EditTextOutlined"
+            android:digits="1234567890+-() "
+            android:ems="12"
             android:inputType="phone" />
 
     </com.google.android.material.textfield.TextInputLayout>

@@ -5,6 +5,7 @@ apply plugin: "kotlin-android"
 apply plugin: "kotlin-kapt"
 
 apply plugin: "kotlin-android-extensions"
+apply plugin: 'dagger.hilt.android.plugin'
 
 //apply plugin: "com.google.gms.google-services"
 //
@@ -168,5 +169,13 @@ dependencies {
 
     //ViewBindingDelegate
     implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.4.4'
+
+    // Hilt
+    implementation Libs.hilt_android
+    implementation Libs.hilt_navigation_fragment
+    kapt Libs.hilt_compiler
+
+    //InputMask Phone
+    implementation 'com.redmadrobot:input-mask-android:6.0.0'
 
 }

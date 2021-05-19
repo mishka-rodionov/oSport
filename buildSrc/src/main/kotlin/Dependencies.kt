@@ -33,6 +33,8 @@ object Versions {
     const val material = "1.2.0-alpha02"
     const val appcompat = "1.2.0"
     const val navigation_fragment = "1.0.0"
+    const val hilt = "2.33-beta"
+    const val hilt_navigation_fragment = "1.0.0-beta01"
 }
 
 object Libs {
@@ -57,4 +59,7 @@ object Libs {
     const val stetho = "com.facebook.stetho:stetho:${Versions.stetho}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val lifecycle_viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_viewmodel_ktx}"
+    const val hilt_navigation_fragment = "androidx.hilt:hilt-navigation-fragment:${Versions.hilt_navigation_fragment}"
+    const val hilt_compiler = "com.google.dagger:hilt-compiler:${Versions.hilt}"
+    const val hilt_android = "com.google.dagger:hilt-android:${Versions.hilt}"
 }

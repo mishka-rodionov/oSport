@@ -39,6 +39,7 @@
     <string name="placeholder_coordinates">%1$s, %2$s</string>
     <string name="placeholder_count_media" translatable="false">%1$d/%2$d</string>
     <string name="placeholder_percentage" translatable="false">%1$d %%</string>
+    <string name="phone_format">"+7 ([000]) [000]-[00]-[00]"</string>
 
     <string name="tab_news_title">Новости</string>
     <string name="tab_event_calendar_title">Центр</string>
