@@ -8,15 +8,15 @@ import com.rodionov.osport.data.mappers.UserMapper
 import com.rodionov.osport.data.network.UserRegistrationApi
 import com.rodionov.osport.domain.model.User
 import com.rodionov.osport.domain.repository.UserRegistrationRepository
+import com.rodionov.osport.app.utils.Result
 
 class UserRegistrationRepositoryImpl(
     errorHandler: ErrorHandler,
     private val userRegistrationApi: UserRegistrationApi
 ) : BaseRepository(errorHandler), UserRegistrationRepository {
 
-    override suspend fun userRegister(user: User, onSuccess:(String) -> Unit, onState: (State) -> Unit) {
-        execute(
-            onSuccess = onSuccess,
+    override suspend fun userRegister(user: User, onState: (State) -> Unit): Result<String> {
+        return resultExecute(
             onState = onState
         ) {
             CommonMapper.toId(userRegistrationApi.userRegister(UserMapper.toRequest(user)))

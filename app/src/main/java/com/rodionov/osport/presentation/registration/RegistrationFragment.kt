@@ -5,6 +5,7 @@ import com.redmadrobot.inputmask.MaskedTextChangedListener
 import com.rodionov.osport.R
 import com.rodionov.osport.app.platform.BaseFragment
 import com.rodionov.osport.databinding.FragmentRegistrationBinding
+import com.rodionov.osport.domain.model.User
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegistrationFragment : BaseFragment(R.layout.fragment_registration){
@@ -31,6 +32,22 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration){
                 }
             }
         )
+
+        binding.btnRegistration.setOnClickListener {
+            viewModel.register(
+                User(
+                    id = "",
+                    firstName = binding.etUserFirstName.text.toString(),
+                    middleName = "",
+                    lastName = binding.etUserLastName.text.toString(),
+                    phoneCountryPrefix = "+7",
+                    phoneNumber = "9271239348",
+                    email = "",
+                    birthDate = null,
+                    sportRanks = null
+                )
+            )
+        }
     }
 
 }
