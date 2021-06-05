@@ -10,9 +10,9 @@ class RegistrationViewModel(
     private val userRegistrationUseCase: UserRegistrationUseCase
 ) : BaseViewModel() {
 
-    fun register(user: User) {
+    fun register(user: User, password: String) {
         launch{
-            userRegistrationUseCase.userRegister(user, ::handleState)
+            userRegistrationUseCase.userRegister(user, password, ::handleState)
         }
     }
 

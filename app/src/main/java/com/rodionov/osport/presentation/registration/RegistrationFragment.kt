@@ -40,12 +40,15 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration){
                     firstName = binding.etUserFirstName.text.toString(),
                     middleName = "",
                     lastName = binding.etUserLastName.text.toString(),
-                    phoneCountryPrefix = "+7",
-                    phoneNumber = "9271239348",
+                    phoneCountryPrefix = "",
+                    phoneNumber = binding.etUserPhone.text.toString().also {
+                        it.substring(2, it.length)
+                    },
                     email = "",
                     birthDate = null,
                     sportRanks = null
-                )
+                ),
+                binding.etUserPassword.text.toString()
             )
         }
     }
