@@ -5,13 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        layout="@layout/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
+        android:id="@+id/tvLogin"
         style="@style/Text.Label"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -22,6 +17,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.19999999" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvLogin"
+        android:gravity="center_vertical">
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:ccp_defaultLanguage="RUSSIAN"
+            app:ccp_countryPreference="ru,ua,by,kz"
+            app:ccp_showNameCode="false"
+            app:ccp_hintExampleNumber="true"
+            app:ccp_defaultNameCode="RU"
+            />
+
+        <EditText
+            android:id="@+id/editText_carrierNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:hint="phone"
+            android:inputType="phone"
+            android:singleLine="true"
+            android:autofillHints="" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnSignIn"

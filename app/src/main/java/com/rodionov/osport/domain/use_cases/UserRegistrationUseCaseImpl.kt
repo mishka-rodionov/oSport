@@ -2,7 +2,7 @@ package com.rodionov.osport.domain.use_cases
 
 import android.util.Log
 import com.rodionov.osport.app.platform.State
-import com.rodionov.osport.app.utils.LoggerTag.Companion.TAG
+import com.rodionov.osport.app.utils.Logger.TAG
 import com.rodionov.osport.app.utils.Result
 import com.rodionov.osport.domain.model.User
 import com.rodionov.osport.domain.repository.UserRegistrationRepository
