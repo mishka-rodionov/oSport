@@ -17,6 +17,7 @@
 
     <string name="hint_login">Логин</string>
     <string name="hint_password">Пароль</string>
+    <string name="hint_password_repeat">Повторите пароль</string>
     <string name="hint_name_request">Название</string>
     <string name="hint_description_request">Описание</string>
     <string name="hint_last_name">Фамилия</string>

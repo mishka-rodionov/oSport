@@ -8,6 +8,8 @@ import com.rodionov.osport.presentation.registration.RegistrationFragment
 
 class LoginViewModel : BaseViewModel() {
 
+    fun checkPassword(password: String, passwordRepeat: String) = password == passwordRepeat
+
     fun navigateToProfile() {
     }
 

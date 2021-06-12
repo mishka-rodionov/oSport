@@ -24,6 +24,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
     override fun initViews() {
         binding.ccp.registerCarrierNumberEditText(binding.editTextCarrierNumber)
         btnSignIn.setOnClickListener {
+//            if (viewModel.checkPassword(binding.))
             Log.d(TAG, "initViews: formatted number ${binding.ccp.formattedFullNumber}")
             Log.d(TAG, "initViews: unformatted number ${binding.ccp.fullNumber}")
             Log.d(TAG, "initViews: unformatted number with prefix ${binding.ccp.fullNumberWithPlus}")

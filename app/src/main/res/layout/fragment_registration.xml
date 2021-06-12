@@ -76,6 +76,23 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilUserPasswordRepeat"
+        style="@style/TextInputLayoutOutlined"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilUserPassword"
+        android:hint="@string/hint_password_repeat"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/colorError">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUserPasswordRepeat"
+            style="@style/EditTextOutlined"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/btnRegistration"
         style="@style/Button"
@@ -84,6 +101,6 @@
         android:text="@string/btn_sign_up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tilUserPassword" />
+        app:layout_constraintTop_toBottomOf="@id/tilUserPasswordRepeat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
