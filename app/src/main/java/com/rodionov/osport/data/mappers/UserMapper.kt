@@ -5,9 +5,9 @@ import data.dto.requests.UserRequest
 
 object UserMapper {
 
-    fun toRequest(user: User) = user.run {
+    fun toRequest(user: User, password: String) = user.run {
         UserRequest(
-            firstName, middleName, lastName, phoneCountryPrefix, phoneNumber, email
+            firstName, middleName, lastName, phoneCountryPrefix, phoneNumber, email, password = password
         )
     }
 

@@ -16,11 +16,11 @@ class UserRegistrationRepositoryImpl(
     private val userRegistrationApi: UserRegistrationApi
 ) : BaseRepository(errorHandler), UserRegistrationRepository {
 
-    override suspend fun userRegister(user: User, onState: (State) -> Unit): Result<String> {
+    override suspend fun userRegister(user: User, password: String, onState: (State) -> Unit): Result<String> {
         return resultExecute(
             onState = onState
         ) {
-            CommonMapper.toId(userRegistrationApi.userRegister(UserMapper.toRequest(user)))
+            CommonMapper.toId(userRegistrationApi.userRegister(UserMapper.toRequest(user, password)))
         }
     }
 

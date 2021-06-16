@@ -12,7 +12,7 @@ class UserRegistrationUseCaseImpl(
 ) : UserRegistrationUseCase {
 
     override suspend fun userRegister(user: User, password: String, onState: (State) -> Unit) {
-        when (val answer = userRegistrationRepository.userRegister(user, onState)) {
+        when (val answer = userRegistrationRepository.userRegister(user, password, onState)) {
             is Result.Success -> {
                 Log.d(TAG, "userRegister: ${answer.data}")
                 userLogin(

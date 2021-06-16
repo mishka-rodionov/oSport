@@ -3,58 +3,98 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/default_margin_16">
 
-    <TextView
-        android:id="@+id/tvLogin"
-        style="@style/Text.Label"
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvLogin"-->
+    <!--        style="@style/Text.Label"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:gravity="center"-->
+    <!--        android:text="@string/label_account"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <Button
+        android:id="@+id/btnSignIn"
+        style="@style/ButtonOutlined"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/label_account"
+        android:layout_marginEnd="@dimen/default_margin_8"
+        android:text="@string/btn_sign_in"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnSignUp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
+
+    <Button
+        android:id="@+id/btnSignUp"
+        style="@style/Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin_8"
+        android:text="@string/btn_sign_up"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSignIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnSignIn"
+        app:layout_constraintTop_toTopOf="@+id/btnSignIn" />
 
     <LinearLayout
         android:id="@+id/llPhoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tvLogin"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toTopOf="@+id/tilPassword"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:layout_editor_absoluteX="16dp">
 
         <com.hbb20.CountryCodePicker
             android:id="@+id/ccp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:ccp_defaultLanguage="RUSSIAN"
             app:ccp_countryPreference="ru,ua,by,kz"
-            app:ccp_showNameCode="false"
-            app:ccp_hintExampleNumber="true"
+            app:ccp_defaultLanguage="RUSSIAN"
             app:ccp_defaultNameCode="RU"
-            />
+            app:ccp_hintExampleNumber="true"
+            app:ccp_showNameCode="false" />
 
-        <EditText
-            android:id="@+id/editText_carrierNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:editable="false"
-            android:hint="phone"
-            android:inputType="phone"
-            android:singleLine="true"
-            android:autofillHints="" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCarrierNumber"
+            style="@style/TextInputLayoutOutlined"
+            android:hint="@string/hint_phone"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/colorError">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCarrierNumber"
+                style="@style/EditTextOutlined"
+                android:singleLine="true"
+                android:autofillHints=""
+                android:digits=" -0123456789"
+                android:maxLength="13"
+                android:inputType="phone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilPassword"
         style="@style/TextInputLayoutOutlined"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llPhoneNumber"
         android:hint="@string/hint_password"
         app:errorEnabled="true"
-        app:errorTextColor="@color/colorError">
+        app:errorTextColor="@color/colorError"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llPhoneNumber">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPassword"
@@ -62,34 +102,5 @@
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/btnSignIn"
-        style="@style/ButtonOutlined"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:text="@string/btn_sign_in"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnSignUp"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnSignUp"
-        style="@style/Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/default_margin_8"
-        android:paddingEnd="@dimen/default_margin_8"
-        android:text="@string/btn_sign_up"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnSignIn"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

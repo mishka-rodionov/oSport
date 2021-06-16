@@ -16,6 +16,8 @@ class RegistrationViewModel(
         }
     }
 
+    fun checkPassword(password: String, repeatPassword: String) = password == repeatPassword
+
     fun navigateToAccount() {
     }
 

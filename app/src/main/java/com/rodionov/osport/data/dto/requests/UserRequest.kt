@@ -19,5 +19,7 @@ data class UserRequest (
         @SerializedName("birth_date")
         val birthDate: String? = null,
         @SerializedName("sport_ranks")
-        val sportRanks: HashMap<String, String>? = null
+        val sportRanks: HashMap<String, String>? = null,
+        @SerializedName("password")
+        val password: String
 )
