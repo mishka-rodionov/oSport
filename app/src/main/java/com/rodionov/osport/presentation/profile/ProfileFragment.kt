@@ -19,8 +19,11 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
     private val binding: FragmentProfileBinding by viewBinding()
 
     override fun initViews() {
+//        tvProfile.setOnClickListener {
+//            viewModel.navigateToNewEvent(NavigationEvent.PushFragment(R.id.registrationFragment))
+//        }
         tvProfile.setOnClickListener {
-            viewModel.navigateToNewEvent(NavigationEvent.PushFragment(R.id.registrationFragment))
+            viewModel.navigateToNewEvent(NavigationEvent.PushFragment(R.id.loginFragment))
         }
         binding.tvProfile.text = "jhdgfjhgs"
 

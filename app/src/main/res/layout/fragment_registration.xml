@@ -40,20 +40,95 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <LinearLayout
+        android:id="@+id/llUserPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/tilUserFirstName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccpUserRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:ccp_countryPreference="ru,ua,by,kz"
+            app:ccp_defaultLanguage="RUSSIAN"
+            app:ccp_defaultNameCode="RU"
+            app:ccp_hintExampleNumber="true"
+            app:ccp_showNameCode="false" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilUserRegisterCarrierNumber"
+            style="@style/TextInputLayoutOutlined"
+            android:hint="@string/hint_phone"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/colorError">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etUserRegisterCarrierNumber"
+                style="@style/EditTextOutlined"
+                android:singleLine="true"
+                android:autofillHints=""
+                android:digits=" -0123456789"
+                android:maxLength="13"
+                android:inputType="phone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/tilUserPhone"-->
+<!--        style="@style/TextInputLayoutOutlined"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tilUserFirstName"-->
+<!--        android:hint="@string/hint_phone"-->
+<!--        app:errorEnabled="true"-->
+<!--        app:errorTextColor="@color/colorError">-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/etUserPhone"-->
+<!--            style="@style/EditTextOutlined"-->
+<!--            android:digits="1234567890+-() "-->
+<!--            android:ems="12"-->
+<!--            android:inputType="phone" />-->
+
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilUserPhone"
+        android:id="@+id/tilUserPassword"
         style="@style/TextInputLayoutOutlined"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tilUserFirstName"
-        android:hint="@string/hint_phone"
+        app:layout_constraintTop_toBottomOf="@id/llUserPhone"
+        android:hint="@string/hint_password"
         app:errorEnabled="true"
         app:errorTextColor="@color/colorError">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etUserPhone"
+            android:id="@+id/etUserPassword"
             style="@style/EditTextOutlined"
-            android:inputType="phone" />
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilUserPasswordRepeat"
+        style="@style/TextInputLayoutOutlined"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilUserPassword"
+        android:hint="@string/hint_password_repeat"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/colorError">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUserPasswordRepeat"
+            style="@style/EditTextOutlined"
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,6 +140,6 @@
         android:text="@string/btn_sign_up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tilUserPhone" />
+        app:layout_constraintTop_toBottomOf="@id/tilUserPasswordRepeat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

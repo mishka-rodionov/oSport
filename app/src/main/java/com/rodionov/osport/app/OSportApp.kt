@@ -18,7 +18,7 @@ class OSportApp : Application() {
         startKoin {
             androidContext(this@OSportApp)
             androidLogger()
-            modules(listOf(appModule, networkModule, repositoryModule, storageModule, viewModelModule, roomModule))
+            modules(listOf(appModule, networkModule, repositoryModule, storageModule, viewModelModule, roomModule, useCaseModule))
         }
 
         if (BuildConfig.DEBUG) {

@@ -18,6 +18,6 @@ val viewModelModule = module {
     viewModel { NewEventViewModel() }
     viewModel { MapViewModel() }
     viewModel { NewsViewModel() }
-    viewModel { LoginViewModel() }
-    viewModel { RegistrationViewModel() }
+    viewModel { LoginViewModel(get()) }
+    viewModel { RegistrationViewModel(get()) }
 }
