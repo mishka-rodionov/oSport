@@ -25,12 +25,13 @@ class UserRegistrationRepositoryImpl(
     }
 
     override suspend fun userLogin(
+        phonePrefix: String,
         phone: String,
         password: String,
         onState: (State) -> Unit
     ): Result<String> {
         return resultExecute(onState = onState) {
-            userRegistrationApi.userLogin(LoginRequest(phone, password)).authToken
+            userRegistrationApi.userLogin(LoginRequest(phonePrefix, phone, password)).authToken
         }
     }
 }

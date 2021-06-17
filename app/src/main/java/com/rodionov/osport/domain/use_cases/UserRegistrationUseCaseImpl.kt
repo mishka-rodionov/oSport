@@ -16,7 +16,8 @@ class UserRegistrationUseCaseImpl(
             is Result.Success -> {
                 Log.d(TAG, "userRegister: ${answer.data}")
                 userLogin(
-                    user.phoneCountryPrefix + user.phoneNumber,
+                    user.phoneCountryPrefix ?: return,
+                    user.phoneNumber ?: return,
                     password,
                     onState
                 )
@@ -27,8 +28,8 @@ class UserRegistrationUseCaseImpl(
         }
     }
 
-    override suspend fun userLogin(phone: String, password: String, onState: (State) -> Unit) {
-        when(val result = userRegistrationRepository.userLogin(phone, password, onState) ) {
+    override suspend fun userLogin(phonePrefix: String, phone: String, password: String, onState: (State) -> Unit) {
+        when(val result = userRegistrationRepository.userLogin(phonePrefix, phone, password, onState) ) {
             is Result.Success -> {
                 Log.d(TAG, "userLogin: ${result.data}")
             }

@@ -55,7 +55,7 @@
         tools:layout_editor_absoluteX="16dp">
 
         <com.hbb20.CountryCodePicker
-            android:id="@+id/ccp"
+            android:id="@+id/ccpUserLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:ccp_countryPreference="ru,ua,by,kz"
@@ -65,14 +65,14 @@
             app:ccp_showNameCode="false" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilCarrierNumber"
+            android:id="@+id/tilUserLoginCarrierNumber"
             style="@style/TextInputLayoutOutlined"
             android:hint="@string/hint_phone"
             app:errorEnabled="true"
             app:errorTextColor="@color/colorError">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etCarrierNumber"
+                android:id="@+id/etUserLoginCarrierNumber"
                 style="@style/EditTextOutlined"
                 android:singleLine="true"
                 android:autofillHints=""

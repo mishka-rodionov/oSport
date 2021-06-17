@@ -24,15 +24,17 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
     override val screenViewModel by lazy { viewModel }
 
     override fun initViews() {
-        binding.ccp.registerCarrierNumberEditText(binding.etCarrierNumber)
+        binding.ccpUserLogin.registerCarrierNumberEditText(binding.etUserLoginCarrierNumber)
         btnSignIn.setOnClickListener {
 //            if (viewModel.checkPassword(binding.))
-            Log.d(TAG, "initViews: formatted number ${binding.ccp.formattedFullNumber}")
-            Log.d(TAG, "initViews: unformatted number ${binding.ccp.fullNumber}")
-            Log.d(TAG, "initViews: unformatted number with prefix ${binding.ccp.fullNumberWithPlus}")
+            Log.d(TAG, "initViews: formatted number ${binding.ccpUserLogin.formattedFullNumber}")
+            Log.d(TAG, "initViews: unformatted number ${binding.ccpUserLogin.fullNumber}")
+            Log.d(TAG, "initViews: unformatted number with prefix ${binding.ccpUserLogin.fullNumberWithPlus}")
 //            viewModel.navigateToProfile()
             viewModel.userLogin(
-                phone = binding.ccp.fullNumber, password = binding.etPassword.text.toString()
+                phonePrefix = binding.ccpUserLogin.selectedCountryCodeWithPlus,
+                phone = binding.ccpUserLogin.fullNumberWithPlus.removePrefix(binding.ccpUserLogin.selectedCountryCodeWithPlus),
+                password = binding.etPassword.text.toString()
             )
         }
 

@@ -21,20 +21,20 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
     override val screenViewModel by lazy { viewModel }
 
     override fun initViews() {
-        MaskedTextChangedListener.installOn(
-            editText = binding.etUserPhone,
-            primaryFormat = getString(R.string.phone_format),
-            valueListener = object : MaskedTextChangedListener.ValueListener {
-                override fun onTextChanged(
-                    maskFilled: Boolean,
-                    extractedValue: String,
-                    formattedValue: String
-                ) {
-//                    presenter.changePhone(formattedValue)
-                }
-            }
-        )
-
+//        MaskedTextChangedListener.installOn(
+//            editText = binding.etUserPhone,
+//            primaryFormat = getString(R.string.phone_format),
+//            valueListener = object : MaskedTextChangedListener.ValueListener {
+//                override fun onTextChanged(
+//                    maskFilled: Boolean,
+//                    extractedValue: String,
+//                    formattedValue: String
+//                ) {
+////                    presenter.changePhone(formattedValue)
+//                }
+//            }
+//        )
+        binding.ccpUserRegister.registerCarrierNumberEditText(binding.etUserRegisterCarrierNumber)
         binding.btnRegistration.setOnClickListener {
             if (viewModel.checkPassword(
                     binding.etUserPassword.text.toString(),
@@ -47,10 +47,8 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
                         firstName = binding.etUserFirstName.text.toString(),
                         middleName = "",
                         lastName = binding.etUserLastName.text.toString(),
-                        phoneCountryPrefix = "",
-                        phoneNumber = binding.etUserPhone.text.toString().also {
-                            it.substring(2, it.length)
-                        },
+                        phoneCountryPrefix = binding.ccpUserRegister.selectedCountryCodeWithPlus,
+                        phoneNumber = binding.ccpUserRegister.fullNumberWithPlus.removePrefix(binding.ccpUserRegister.selectedCountryCodeWithPlus),
                         email = "",
                         birthDate = null,
                         sportRanks = null
