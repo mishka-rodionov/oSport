@@ -5,10 +5,12 @@ import com.rodionov.osport.app.platform.State
 import com.rodionov.osport.app.utils.Logger.TAG
 import com.rodionov.osport.app.utils.Result
 import com.rodionov.osport.domain.model.User
+import com.rodionov.osport.domain.repository.PreferencesRepository
 import com.rodionov.osport.domain.repository.UserRegistrationRepository
 
 class UserRegistrationUseCaseImpl(
-    private val userRegistrationRepository: UserRegistrationRepository
+    private val userRegistrationRepository: UserRegistrationRepository,
+    private val preferencesRepository: PreferencesRepository
 ) : UserRegistrationUseCase {
 
     override suspend fun userRegister(user: User, password: String, onState: (State) -> Unit) {
@@ -32,6 +34,7 @@ class UserRegistrationUseCaseImpl(
         when(val result = userRegistrationRepository.userLogin(phonePrefix, phone, password, onState) ) {
             is Result.Success -> {
                 Log.d(TAG, "userLogin: ${result.data}")
+                preferencesRepository.setAuthorizationToken(result.data)
             }
             is Result.Error -> {
                 Log.d(TAG, "userLogin: ${result.message}")

@@ -5,5 +5,5 @@ import com.rodionov.osport.domain.use_cases.UserRegistrationUseCaseImpl
 import org.koin.dsl.module
 
 val useCaseModule = module {
-    factory<UserRegistrationUseCase> { UserRegistrationUseCaseImpl(get()) }
+    factory<UserRegistrationUseCase> { UserRegistrationUseCaseImpl(get(), get()) }
 }

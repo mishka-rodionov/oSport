@@ -9,11 +9,14 @@ import com.rodionov.osport.data.network.UserRegistrationApi
 import com.rodionov.osport.domain.model.User
 import com.rodionov.osport.domain.repository.UserRegistrationRepository
 import com.rodionov.osport.app.utils.Result
+import com.rodionov.osport.data.database.dao.UserDao
+import com.rodionov.osport.data.dto.IdDto
 import com.rodionov.osport.data.dto.requests.LoginRequest
 
 class UserRegistrationRepositoryImpl(
     errorHandler: ErrorHandler,
-    private val userRegistrationApi: UserRegistrationApi
+    private val userRegistrationApi: UserRegistrationApi,
+    private val userDao: UserDao
 ) : BaseRepository(errorHandler), UserRegistrationRepository {
 
     override suspend fun userRegister(user: User, password: String, onState: (State) -> Unit): Result<String> {
@@ -31,7 +34,17 @@ class UserRegistrationRepositoryImpl(
         onState: (State) -> Unit
     ): Result<String> {
         return resultExecute(onState = onState) {
-            userRegistrationApi.userLogin(LoginRequest(phonePrefix, phone, password)).authToken
+            val loginResponse = userRegistrationApi.userLogin(LoginRequest(phonePrefix, phone, password))
+            getUserById(id = loginResponse.userId, onState = onState)
+            loginResponse.authToken
+        }
+    }
+
+    override suspend fun getUserById(id: String, onState: (State) -> Unit): Result<User> {
+        return resultExecute(onState = onState) {
+            val user = UserMapper.toModel(userRegistrationApi.getUserById(IdDto(id = id)))
+            userDao.setUser(UserMapper.toEntity(user = user))
+            user
         }
     }
 }

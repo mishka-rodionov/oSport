@@ -1,6 +1,5 @@
 package com.rodionov.osport.domain.model
 
-import com.google.gson.annotations.SerializedName
 import java.util.*
 import kotlin.collections.HashMap
 

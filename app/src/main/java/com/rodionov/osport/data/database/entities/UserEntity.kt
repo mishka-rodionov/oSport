@@ -1,11 +1,13 @@
 package com.rodionov.osport.data.database.entities
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
+import androidx.room.*
+import com.rodionov.osport.data.database.converters.CommonConverters
 import java.util.*
 
 @Entity(tableName = "user")
+@TypeConverters(CommonConverters::class)
 data class UserEntity(
+    @PrimaryKey
     @ColumnInfo(name = "id")
     val id: String,
     @ColumnInfo(name = "first_name")
