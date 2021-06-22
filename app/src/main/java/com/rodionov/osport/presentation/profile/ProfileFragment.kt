@@ -25,9 +25,6 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
     }
 
     override fun initViews() {
-//        tvProfile.setOnClickListener {
-//            viewModel.navigateToNewEvent(NavigationEvent.PushFragment(R.id.registrationFragment))
-//        }
         tvProfile.setOnClickListener {
             viewModel.navigateToNewEvent(NavigationEvent.PushFragment(R.id.loginFragment))
         }
