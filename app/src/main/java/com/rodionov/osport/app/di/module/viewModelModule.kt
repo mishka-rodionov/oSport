@@ -14,7 +14,7 @@ val viewModelModule = module {
 //    viewModel { AuthViewModel(get(), get(), get()) }
 //    viewModel { (requestId: Int) -> DetailRequestViewModel(get(), requestId = requestId) }
     viewModel { EventCalendarViewModel() }
-    viewModel { ProfileViewModel() }
+    viewModel { ProfileViewModel(get()) }
     viewModel { NewEventViewModel() }
     viewModel { MapViewModel() }
     viewModel { NewsViewModel() }
