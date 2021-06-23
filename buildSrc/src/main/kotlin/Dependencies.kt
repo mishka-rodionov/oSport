@@ -22,7 +22,7 @@ object Versions {
     const val koin = "2.1.6"
     const val navigation = "2.3.4"
     const val preference_ktx = "1.1.1"
-    const val constraint_layout = "2.1.0-alpha2"
+    const val constraint_layout = "2.1.0-beta02"
     const val lifecycle_viewmodel_ktx = "2.3.0"
     const val retrofit = "2.6.1"
     const val converter_gson = "2.6.1"

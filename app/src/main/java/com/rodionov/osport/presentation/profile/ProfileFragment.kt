@@ -28,7 +28,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
 //        tvProfile.setOnClickListener {
 //            viewModel.navigateToNewEvent(NavigationEvent.PushFragment(R.id.loginFragment))
 //        }
-        binding.tvProfile.text = "jhdgfjhgs"
+//        binding.tvProfile.text = "jhdgfjhgs"
 
     }
 
