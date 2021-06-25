@@ -8,5 +8,7 @@ interface UserRegistrationRepository {
 
     suspend fun userRegister(user: User, password: String, onState: (State) -> Unit): Result<String>
     suspend fun userLogin(phonePrefix: String, phone: String, password: String, onState: (State) -> Unit): Result<String>
+    suspend fun getUserById(id: String, onState: (State) -> Unit): Result<User>
+    suspend fun getUser(onState: (State) -> Unit): Result<User>
 
 }

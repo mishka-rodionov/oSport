@@ -125,8 +125,20 @@
         <item name="android:textSize">@dimen/font_14</item>
     </style>
 
+    <style name="Text.Gray">
+        <item name="android:textColor">@color/colorLightHint</item>
+    </style>
+
     <style name="Text.16">
         <item name="android:textSize">@dimen/font_16</item>
+    </style>
+
+    <style name="Text.18">
+        <item name="android:textSize">@dimen/font_18</item>
+    </style>
+
+    <style name="Text.20">
+        <item name="android:textSize">@dimen/font_20</item>
     </style>
 
     <style name="Text.WhiteLightTransparent">

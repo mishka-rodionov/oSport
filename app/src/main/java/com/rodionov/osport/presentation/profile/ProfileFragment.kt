@@ -1,11 +1,10 @@
 package com.rodionov.osport.presentation.profile
 
-import androidx.viewbinding.ViewBinding
+import android.os.Bundle
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.rodionov.osport.R
 import com.rodionov.osport.app.platform.BaseFragment
 import com.rodionov.osport.app.platform.NavigationEvent
-import com.rodionov.osport.databinding.FragmentNewsBinding
 import com.rodionov.osport.databinding.FragmentProfileBinding
 import kotlinx.android.synthetic.main.fragment_profile.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -18,15 +17,25 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
 
     private val binding: FragmentProfileBinding by viewBinding()
 
-    override fun initViews() {
-//        tvProfile.setOnClickListener {
-//            viewModel.navigateToNewEvent(NavigationEvent.PushFragment(R.id.registrationFragment))
-//        }
-        tvProfile.setOnClickListener {
-            viewModel.navigateToNewEvent(NavigationEvent.PushFragment(R.id.loginFragment))
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (!viewModel.checkAuthorization()) {
+            viewModel.navigateToLogin(action = R.id.action_profileFragment_to_loginFragment)
+        } else {
+            viewModel.getUser()
         }
-        binding.tvProfile.text = "jhdgfjhgs"
+    }
 
+    private fun setupObservers() {
+        viewModel.user.observe(viewLifecycleOwner) {
+            binding.tvProfileUserName.text =
+                getString(R.string.profile_fullname_pattern, it.lastName, it.firstName)
+            binding.tvProfilePhone.text = it.phoneCountryPrefix + it.phoneNumber
+        }
+    }
+
+    override fun initViews() {
+        setupObservers()
     }
 
 }
