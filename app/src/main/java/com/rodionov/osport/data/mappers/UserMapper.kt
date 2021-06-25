@@ -19,6 +19,12 @@ object UserMapper {
         )
     }
 
+    fun toModel(userEntity: UserEntity) = userEntity.run {
+        User(
+            id, firstName, middleName, lastName, phoneCountryPrefix, phoneNumber, email
+        )
+    }
+
     fun toEntity(user: User) = user.run {
         UserEntity(
             id, firstName, middleName, lastName, phoneCountryPrefix, phoneNumber, email

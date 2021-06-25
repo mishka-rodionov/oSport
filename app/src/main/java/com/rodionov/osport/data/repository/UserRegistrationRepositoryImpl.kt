@@ -19,11 +19,22 @@ class UserRegistrationRepositoryImpl(
     private val userDao: UserDao
 ) : BaseRepository(errorHandler), UserRegistrationRepository {
 
-    override suspend fun userRegister(user: User, password: String, onState: (State) -> Unit): Result<String> {
+    override suspend fun userRegister(
+        user: User,
+        password: String,
+        onState: (State) -> Unit
+    ): Result<String> {
         return resultExecute(
             onState = onState
         ) {
-            CommonMapper.toId(userRegistrationApi.userRegister(UserMapper.toRequest(user, password)))
+            CommonMapper.toId(
+                userRegistrationApi.userRegister(
+                    UserMapper.toRequest(
+                        user,
+                        password
+                    )
+                )
+            )
         }
     }
 
@@ -34,7 +45,8 @@ class UserRegistrationRepositoryImpl(
         onState: (State) -> Unit
     ): Result<String> {
         return resultExecute(onState = onState) {
-            val loginResponse = userRegistrationApi.userLogin(LoginRequest(phonePrefix, phone, password))
+            val loginResponse =
+                userRegistrationApi.userLogin(LoginRequest(phonePrefix, phone, password))
             getUserById(id = loginResponse.userId, onState = onState)
             loginResponse.authToken
         }
@@ -45,6 +57,12 @@ class UserRegistrationRepositoryImpl(
             val user = UserMapper.toModel(userRegistrationApi.getUserById(IdDto(id = id)))
             userDao.setUser(UserMapper.toEntity(user = user))
             user
+        }
+    }
+
+    override suspend fun getUser(onState: (State) -> Unit): Result<User> {
+        return resultExecute(onState = onState) {
+            UserMapper.toModel(userDao.getUser())
         }
     }
 }

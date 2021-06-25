@@ -19,17 +19,23 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if(!viewModel.checkAuthorization()) {
+        if (!viewModel.checkAuthorization()) {
             viewModel.navigateToLogin(action = R.id.action_profileFragment_to_loginFragment)
+        } else {
+            viewModel.getUser()
+        }
+    }
+
+    private fun setupObservers() {
+        viewModel.user.observe(viewLifecycleOwner) {
+            binding.tvProfileUserName.text =
+                getString(R.string.profile_fullname_pattern, it.lastName, it.firstName)
+            binding.tvProfilePhone.text = it.phoneCountryPrefix + it.phoneNumber
         }
     }
 
     override fun initViews() {
-//        tvProfile.setOnClickListener {
-//            viewModel.navigateToNewEvent(NavigationEvent.PushFragment(R.id.loginFragment))
-//        }
-//        binding.tvProfile.text = "jhdgfjhgs"
-
+        setupObservers()
     }
 
 }

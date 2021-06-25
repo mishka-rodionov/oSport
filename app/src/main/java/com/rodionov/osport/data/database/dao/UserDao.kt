@@ -15,6 +15,9 @@ interface UserDao {
     @Query("SELECT * FROM user WHERE id = :id")
     fun getUser(id: String): UserEntity
 
+    @Query("SELECT * FROM user LIMIT 1")
+    fun getUser(): UserEntity
+
     @Query("DELETE FROM user")
     fun clearAll()
 

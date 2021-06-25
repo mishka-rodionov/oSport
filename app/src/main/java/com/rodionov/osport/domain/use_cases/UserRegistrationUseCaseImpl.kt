@@ -47,4 +47,15 @@ class UserRegistrationUseCaseImpl(
     }
 
     override fun checkAuthorization(onState: (State) -> Unit): Boolean = !preferencesRepository.getAuthorizationToken().isNullOrEmpty()
+
+    override suspend fun getUser(onState: (State) -> Unit): User {
+        return when(val result = userRegistrationRepository.getUser(onState)) {
+            is Result.Success -> {
+                result.data
+            }
+            is Result.Error -> {
+                throw Throwable(message = "User not found")
+            }
+        }
+    }
 }
