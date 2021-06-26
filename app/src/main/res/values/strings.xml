@@ -54,6 +54,12 @@
     <string name="toolbar_title_registration">Регистрация</string>
     <string name="toolbar_title_account">Личная информация</string>
 
+    <!--    Common-->
+    <string name="common_date_label">Дата</string>
+    <string name="common_time_label">Время</string>
+    <string name="common_detail_information_label">Подробная информация</string>
+
+
     <!--    Profile-->
     <string name="profile_account_label">Аккаунт</string>
     <string name="profile_phone_label">Номер телефона к которому привязан аккаунт</string>
@@ -61,6 +67,10 @@
     <string name="profile_about_label">О себе</string>
     <string name="profile_city_label">Город</string>
     <string name="profile_fullname_pattern">%1$s %2$s</string>
+
+    <!--    Competition-->
+
+
 
     <string-array name="spinner_type_critical">
         <item>Низкая</item>
