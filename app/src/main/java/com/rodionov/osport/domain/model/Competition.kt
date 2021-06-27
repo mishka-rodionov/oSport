@@ -11,6 +11,6 @@ data class Competition(
     val place: Place,
     val organizers: List<Organizer>,
     val title: String,
-    val startInterval: Float,
+    val startInterval: Double,
     val description: String? = null
 )

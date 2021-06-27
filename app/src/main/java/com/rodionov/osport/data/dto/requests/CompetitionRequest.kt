@@ -17,7 +17,7 @@ data class CompetitionRequest(
     @SerializedName("place")
     val place: Place,
     @SerializedName("start_interval")
-    val startInterval: Float,
+    val startInterval: Double,
     @SerializedName("organizers")
     val organizers: List<OrganizerDto>,
     @SerializedName("title")

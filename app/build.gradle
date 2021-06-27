@@ -181,4 +181,8 @@ dependencies {
     //Country Code Prefix
     implementation 'com.hbb20:ccp:2.5.1'
 
+    //Paging Source
+    def pagingVersion = "3.0.0"
+    implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
+
 }
