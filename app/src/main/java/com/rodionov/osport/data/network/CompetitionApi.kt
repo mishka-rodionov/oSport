@@ -1,6 +1,6 @@
 package com.rodionov.osport.data.network
 
-import com.rodionov.osport.data.dto.requests.CompetitionRequest
+import com.rodionov.osport.data.dto.requests.CompetitionShortRequest
 import com.rodionov.osport.data.dto.response.CompetitionShortResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -8,7 +8,7 @@ import retrofit2.http.POST
 interface CompetitionApi {
 
     @POST(GET_COMPETITIONS)
-    suspend fun getCompetitionsShort(@Body competitionRequest: CompetitionRequest): List<CompetitionShortResponse>
+    suspend fun getCompetitionsShort(@Body competitionShortRequest: CompetitionShortRequest): List<CompetitionShortResponse>
 
     companion object {
         const val COMPETITION_NEW = "/competition/new"
