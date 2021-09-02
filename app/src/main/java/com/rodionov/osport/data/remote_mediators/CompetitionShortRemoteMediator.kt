@@ -4,110 +4,129 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
+import com.rodionov.osport.app.utils.Result
+import com.rodionov.osport.data.database.dao.CompetitionDao
+import com.rodionov.osport.data.database.dao.CompetitionShortRemoteKeyDao
 import com.rodionov.osport.data.database.entities.CompetitionShortRemoteKeyEntity
+import com.rodionov.osport.data.mappers.toEntity
 import com.rodionov.osport.domain.model.CompetitionShort
 import com.rodionov.osport.domain.repository.CompetitionRepository
 import retrofit2.HttpException
 import java.io.IOException
-import java.io.InvalidObjectException
 
 @ExperimentalPagingApi
 class CompetitionShortRemoteMediator(
-    private val competitionRepository: CompetitionRepository
-): RemoteMediator<Int, CompetitionShort>() {
+    private val competitionRepository: CompetitionRepository,
+    private val competitionShortRemoteKeyDao: CompetitionShortRemoteKeyDao,
+    private val competitionDao: CompetitionDao
+) : RemoteMediator<Int, CompetitionShort>() {
 
     override suspend fun load(
         loadType: LoadType,
         state: PagingState<Int, CompetitionShort>
     ): MediatorResult {
-        val pageKeyData = getKeyPageData(loadType, state)
-        val page = when (pageKeyData) {
-            is MediatorResult.Success -> {
-                return pageKeyData
+        val page = when (loadType) {
+            LoadType.REFRESH -> {
+                val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
+                remoteKeys?.nextKey?.minus(1) ?: DEFAULT_PAGE_INDEX
             }
-            else -> {
-                pageKeyData as Int
+            LoadType.PREPEND -> {
+                val remoteKeys = getRemoteKeyForFirstItem(state)
+                // If remoteKeys is null, that means the refresh result is not in the database yet.
+                // We can return Success with `endOfPaginationReached = false` because Paging
+                // will call this method again if RemoteKeys becomes non-null.
+                // If remoteKeys is NOT NULL but its prevKey is null, that means we've reached
+                // the end of pagination for prepend.
+                val prevKey = remoteKeys?.prevKey
+                if (prevKey == null) {
+                    return MediatorResult.Success(endOfPaginationReached = remoteKeys != null)
+                }
+                prevKey
+            }
+            LoadType.APPEND -> {
+                val remoteKeys = getRemoteKeyForLastItem(state)
+                // If remoteKeys is null, that means the refresh result is not in the database yet.
+                // We can return Success with `endOfPaginationReached = false` because Paging
+                // will call this method again if RemoteKeys becomes non-null.
+                // If remoteKeys is NOT NULL but its prevKey is null, that means we've reached
+                // the end of pagination for append.
+                val nextKey = remoteKeys?.nextKey
+                if (nextKey == null) {
+                    return MediatorResult.Success(endOfPaginationReached = remoteKeys != null)
+                }
+                nextKey
             }
         }
 
-        when(val result = competitionRepository.getCompetitionShortList())
-
         try {
-            val response = doggoApiService.getDoggoImages(page, state.config.pageSize)
-            val isEndOfList = response.isEmpty()
-            appDatabase.withTransaction {
-                // clear all tables in the database
-                if (loadType == LoadType.REFRESH) {
-                    appDatabase.getRepoDao().clearRemoteKeys()
-                    appDatabase.getDoggoImageModelDao().clearAllDoggos()
+
+            when (val result = competitionRepository.getCompetitionShortList(
+                state.config.pageSize * page.toLong(),
+                state.config.pageSize
+            )) {
+                is Result.Success -> {
+                    val endOfPaginationReached = result.data.isEmpty()
+//                    repoDatabase.withTransaction {
+                    // clear all tables in the database
+                    if (loadType == LoadType.REFRESH) {
+                        competitionShortRemoteKeyDao.clearAll()
+                        competitionDao.clearAllCompetitionShort()
+                    }
+                    val prevKey = if (page == DEFAULT_PAGE_INDEX) null else page - 1
+                    val nextKey = if (endOfPaginationReached) null else page + 1
+                    val keys = result.data.map { competitionShort ->
+                        CompetitionShortRemoteKeyEntity(
+                            id = competitionShort.id,
+                            prevKey = prevKey,
+                            nextKey = nextKey
+                        )
+                    }
+                    competitionShortRemoteKeyDao.insertAll(keys)
+                    competitionDao.insertAllCompetitionShort(result.data.map { it.toEntity() })
+//                    }
+                    return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
                 }
-                val prevKey = if (page == DEFAULT_PAGE_INDEX) null else page - 1
-                val nextKey = if (isEndOfList) null else page + 1
-                val keys = response.map {
-                    RemoteKeys(repoId = it.id, prevKey = prevKey, nextKey = nextKey)
+                is Result.Error -> {
+                    return MediatorResult.Error(result.error)
                 }
-                appDatabase.getRepoDao().insertAll(keys)
-                appDatabase.getDoggoImageModelDao().insertAll(response)
             }
-            return MediatorResult.Success(endOfPaginationReached = isEndOfList)
+
         } catch (exception: IOException) {
             return MediatorResult.Error(exception)
         } catch (exception: HttpException) {
             return MediatorResult.Error(exception)
         }
+
     }
 
-    /**
-     * this returns the page key or the final end of list success result
-     */
-    suspend fun getKeyPageData(loadType: LoadType, state: PagingState<Int, CompetitionShort>): Any? {
-        return when (loadType) {
-            LoadType.REFRESH -> {
-                val remoteKeys = getClosestRemoteKey(state)
-                remoteKeys?.nextKey?.minus(1) ?: DEFAULT_PAGE_INDEX
+    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, CompetitionShort>): CompetitionShortRemoteKeyEntity? {
+        // Get the last page that was retrieved, that contained items.
+        // From that last page, get the last item
+        return state.pages.lastOrNull() { it.data.isNotEmpty() }?.data?.lastOrNull()
+            ?.let { competitionShort ->
+                // Get the remote keys of the last item retrieved
+                competitionShortRemoteKeyDao.getCompetitionShortRemoteKey(competitionShort.id)
             }
-            LoadType.APPEND -> {
-                val remoteKeys = getLastRemoteKey(state)
-                    ?: throw InvalidObjectException("Remote key should not be null for $loadType")
-                remoteKeys.nextKey
+    }
+
+    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, CompetitionShort>): CompetitionShortRemoteKeyEntity? {
+        // Get the first page that was retrieved, that contained items.
+        // From that first page, get the first item
+        return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
+            ?.let { competitionShort ->
+                // Get the remote keys of the first items retrieved
+                competitionShortRemoteKeyDao.getCompetitionShortRemoteKey(competitionShort.id)
             }
-            LoadType.PREPEND -> {
-                val remoteKeys = getFirstRemoteKey(state)
-                    ?: throw InvalidObjectException("Invalid state, key should not be null")
-                //end of list condition reached
-                remoteKeys.prevKey ?: return MediatorResult.Success(endOfPaginationReached = true)
-                remoteKeys.prevKey
-            }
-        }
     }
 
-    /**
-     * get the last remote key inserted which had the data
-     */
-    private suspend fun getLastRemoteKey(state: PagingState<Int, CompetitionShort>): CompetitionShortRemoteKeyEntity? {
-        return state.pages
-            .lastOrNull { it.data.isNotEmpty() }
-            ?.data?.lastOrNull()
-            ?.let { doggo -> appDatabase.getRepoDao().remoteKeysDoggoId(doggo.id) }
-    }
-
-    /**
-     * get the first remote key inserted which had the data
-     */
-    private suspend fun getFirstRemoteKey(state: PagingState<Int, CompetitionShort>): CompetitionShortRemoteKeyEntity? {
-        return state.pages
-            .firstOrNull() { it.data.isNotEmpty() }
-            ?.data?.firstOrNull()
-            ?.let { doggo -> appDatabase.getRepoDao().remoteKeysDoggoId(doggo.id) }
-    }
-
-    /**
-     * get the closest remote key inserted which had the data
-     */
-    private suspend fun getClosestRemoteKey(state: PagingState<Int, CompetitionShort>): CompetitionShortRemoteKeyEntity? {
+    private suspend fun getRemoteKeyClosestToCurrentPosition(
+        state: PagingState<Int, CompetitionShort>
+    ): CompetitionShortRemoteKeyEntity? {
+        // The paging library is trying to load data after the anchor position
+        // Get the item closest to the anchor position
         return state.anchorPosition?.let { position ->
-            state.closestItemToPosition(position)?.id?.let { repoId ->
-                appDatabase.getRepoDao().remoteKeysDoggoId(repoId)
+            state.closestItemToPosition(position)?.id?.let { competitionShortId ->
+                competitionShortRemoteKeyDao.getCompetitionShortRemoteKey(competitionShortId)
             }
         }
     }
