@@ -170,6 +170,7 @@ dependencies {
 
     //ViewBindingDelegate
     implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.4.4'
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.4.7'
 
     // Hilt
     implementation Libs.hilt_android
