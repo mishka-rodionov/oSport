@@ -8,6 +8,6 @@ import kotlinx.coroutines.flow.Flow
 interface CompetitionRepository {
 
     suspend fun getCompetitionShortList(skip: Long, limit: Int) : Result<List<CompetitionShort>>
-    suspend fun getCompetitionShortListFlow(): Flow<PagingData<CompetitionShort>>
+    fun getCompetitionShortListFlow(): Flow<PagingData<CompetitionShort>>
 
 }

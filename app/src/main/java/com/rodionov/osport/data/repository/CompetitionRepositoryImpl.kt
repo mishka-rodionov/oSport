@@ -43,7 +43,7 @@ class CompetitionRepositoryImpl(
     }
 
     @OptIn(ExperimentalPagingApi::class)
-    override suspend fun getCompetitionShortListFlow(): Flow<PagingData<CompetitionShort>> {
+    override fun getCompetitionShortListFlow(): Flow<PagingData<CompetitionShort>> {
         return Pager(
             config = PagingConfig(pageSize = PAGE_SIZE, enablePlaceholders = false),
             remoteMediator = CompetitionShortRemoteMediator(
