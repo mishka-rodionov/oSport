@@ -31,6 +31,7 @@ android {
 
         kotlinOptions {
             jvmTarget = "1.8"
+            freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
         }
     }
     buildTypes {
@@ -182,7 +183,7 @@ dependencies {
     implementation 'com.hbb20:ccp:2.5.1'
 
     //Paging Source
-    def pagingVersion = "3.0.0"
+    def pagingVersion = "3.0.1"
     implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
 
 }
