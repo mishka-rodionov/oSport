@@ -3,6 +3,7 @@ package com.rodionov.osport.app.di.module
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.rodionov.osport.BuildConfig
+import com.rodionov.osport.data.network.CompetitionApi
 import com.rodionov.osport.data.network.UserRegistrationApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -23,6 +24,8 @@ val networkModule = module {
 
     single { buildUserRegistrationApi(get()) }
 
+    single { buildCompetitionApi(get()) }
+
     single { buildJson() }
 
 }
@@ -34,6 +37,10 @@ val networkModule = module {
 
 private fun buildUserRegistrationApi(retrofit: Retrofit): UserRegistrationApi? {
     return retrofit.create(UserRegistrationApi::class.java)
+}
+
+private fun buildCompetitionApi(retrofit: Retrofit): CompetitionApi? {
+    return retrofit.create(CompetitionApi::class.java)
 }
 
 private fun buildJson() = GsonBuilder().create()

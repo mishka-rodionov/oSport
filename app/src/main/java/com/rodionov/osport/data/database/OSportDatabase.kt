@@ -5,17 +5,23 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.rodionov.osport.data.database.OSportDatabase.Companion.DATABASE_VERSION
+import com.rodionov.osport.data.database.dao.CompetitionDao
+import com.rodionov.osport.data.database.dao.CompetitionShortRemoteKeyDao
 import com.rodionov.osport.data.database.dao.UserDao
+import com.rodionov.osport.data.database.entities.CompetitionShortEntity
+import com.rodionov.osport.data.database.entities.CompetitionShortRemoteKeyEntity
 import com.rodionov.osport.data.database.entities.UserEntity
 
 @Database(
-    entities = [UserEntity::class],
+    entities = [UserEntity::class, CompetitionShortEntity::class, CompetitionShortRemoteKeyEntity::class],
     version = DATABASE_VERSION,
     exportSchema = false
 )
 abstract class OSportDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
+    abstract fun competitionDao(): CompetitionDao
+    abstract fun competitionShortRemoteKeyDao(): CompetitionShortRemoteKeyDao
 
     companion object {
         const val DATABASE_VERSION = 1

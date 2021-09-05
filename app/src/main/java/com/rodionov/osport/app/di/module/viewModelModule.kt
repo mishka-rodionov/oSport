@@ -1,5 +1,6 @@
 package com.rodionov.osport.app.di.module
 
+import com.rodionov.osport.presentation.event_news.EventNewsViewModel
 import com.rodionov.osport.presentation.eventcalendar.EventCalendarViewModel
 import com.rodionov.osport.presentation.login.LoginViewModel
 import com.rodionov.osport.presentation.map.MapViewModel
@@ -18,4 +19,5 @@ val viewModelModule = module {
     viewModel { NewsViewModel() }
     viewModel { LoginViewModel(get()) }
     viewModel { RegistrationViewModel(get()) }
+    viewModel { EventNewsViewModel(get())}
 }

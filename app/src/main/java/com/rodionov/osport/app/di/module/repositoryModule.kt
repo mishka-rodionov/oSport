@@ -1,7 +1,9 @@
 package com.rodionov.osport.app.di.module
 
+import com.rodionov.osport.data.repository.CompetitionRepositoryImpl
 import com.rodionov.osport.data.repository.PreferencesRepositoryImpl
 import com.rodionov.osport.data.repository.UserRegistrationRepositoryImpl
+import com.rodionov.osport.domain.repository.CompetitionRepository
 import com.rodionov.osport.domain.repository.PreferencesRepository
 import com.rodionov.osport.domain.repository.UserRegistrationRepository
 import org.koin.dsl.module
@@ -11,4 +13,5 @@ val repositoryModule = module {
 //    single<UserRepository> { UserRepositoryImp(get(), get(), get()) }
     single<UserRegistrationRepository> { UserRegistrationRepositoryImpl(get(), get(), get()) }
     single<PreferencesRepository> { PreferencesRepositoryImpl(get()) }
+    single<CompetitionRepository> { CompetitionRepositoryImpl(get(), get(), get(), get()) }
 }
