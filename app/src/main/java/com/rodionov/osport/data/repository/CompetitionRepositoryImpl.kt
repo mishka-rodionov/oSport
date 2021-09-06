@@ -1,14 +1,13 @@
 package com.rodionov.osport.data.repository
 
-import androidx.paging.ExperimentalPagingApi
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
+import android.util.Log
+import androidx.paging.*
 import com.rodionov.osport.app.platform.BaseRepository
 import com.rodionov.osport.app.platform.ErrorHandler
 import com.rodionov.osport.app.utils.Result
 import com.rodionov.osport.data.database.dao.CompetitionDao
 import com.rodionov.osport.data.database.dao.CompetitionShortRemoteKeyDao
+import com.rodionov.osport.data.database.entities.CompetitionShortEntity
 import com.rodionov.osport.data.dto.requests.CompetitionRequest
 import com.rodionov.osport.data.dto.requests.CompetitionShortRequest
 import com.rodionov.osport.data.dto.response.CompetitionShortResponse
@@ -43,7 +42,8 @@ class CompetitionRepositoryImpl(
     }
 
     @OptIn(ExperimentalPagingApi::class)
-    override fun getCompetitionShortListFlow(): Flow<PagingData<CompetitionShort>> {
+    override fun getCompetitionShortListFlow(): Flow<PagingData<CompetitionShortEntity>> {
+        Log.d("LOG_TAG", "getCompetitionShortListFlow: ")
         return Pager(
             config = PagingConfig(pageSize = PAGE_SIZE, enablePlaceholders = false),
             remoteMediator = CompetitionShortRemoteMediator(
@@ -56,6 +56,6 @@ class CompetitionRepositoryImpl(
     }
 
     companion object {
-        const val PAGE_SIZE = 20
+        const val PAGE_SIZE = 5
     }
 }

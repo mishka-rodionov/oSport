@@ -7,6 +7,7 @@ import androidx.paging.RemoteMediator
 import com.rodionov.osport.app.utils.Result
 import com.rodionov.osport.data.database.dao.CompetitionDao
 import com.rodionov.osport.data.database.dao.CompetitionShortRemoteKeyDao
+import com.rodionov.osport.data.database.entities.CompetitionShortEntity
 import com.rodionov.osport.data.database.entities.CompetitionShortRemoteKeyEntity
 import com.rodionov.osport.data.mappers.toEntity
 import com.rodionov.osport.domain.model.CompetitionShort
@@ -19,11 +20,11 @@ class CompetitionShortRemoteMediator(
     private val competitionRepository: CompetitionRepository,
     private val competitionShortRemoteKeyDao: CompetitionShortRemoteKeyDao,
     private val competitionDao: CompetitionDao
-) : RemoteMediator<Int, CompetitionShort>() {
+) : RemoteMediator<Int, CompetitionShortEntity>() {
 
     override suspend fun load(
         loadType: LoadType,
-        state: PagingState<Int, CompetitionShort>
+        state: PagingState<Int, CompetitionShortEntity>
     ): MediatorResult {
         val page = when (loadType) {
             LoadType.REFRESH -> {
@@ -61,7 +62,7 @@ class CompetitionShortRemoteMediator(
         try {
 
             when (val result = competitionRepository.getCompetitionShortList(
-                state.config.pageSize * page.toLong(),
+                state.config.pageSize * (page.toLong() - 1),
                 state.config.pageSize
             )) {
                 is Result.Success -> {
@@ -99,7 +100,7 @@ class CompetitionShortRemoteMediator(
 
     }
 
-    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, CompetitionShort>): CompetitionShortRemoteKeyEntity? {
+    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, CompetitionShortEntity>): CompetitionShortRemoteKeyEntity? {
         // Get the last page that was retrieved, that contained items.
         // From that last page, get the last item
         return state.pages.lastOrNull() { it.data.isNotEmpty() }?.data?.lastOrNull()
@@ -109,7 +110,7 @@ class CompetitionShortRemoteMediator(
             }
     }
 
-    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, CompetitionShort>): CompetitionShortRemoteKeyEntity? {
+    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, CompetitionShortEntity>): CompetitionShortRemoteKeyEntity? {
         // Get the first page that was retrieved, that contained items.
         // From that first page, get the first item
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
@@ -120,7 +121,7 @@ class CompetitionShortRemoteMediator(
     }
 
     private suspend fun getRemoteKeyClosestToCurrentPosition(
-        state: PagingState<Int, CompetitionShort>
+        state: PagingState<Int, CompetitionShortEntity>
     ): CompetitionShortRemoteKeyEntity? {
         // The paging library is trying to load data after the anchor position
         // Get the item closest to the anchor position
@@ -133,7 +134,7 @@ class CompetitionShortRemoteMediator(
 
     companion object {
         const val DEFAULT_PAGE_INDEX = 1
-        const val DEFAULT_PAGE_SIZE = 20
+        const val DEFAULT_PAGE_SIZE = 5
     }
 
 }

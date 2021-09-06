@@ -90,9 +90,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
 
     //Room
-    implementation "androidx.room:room-runtime:2.2.6"
-    kapt "androidx.room:room-compiler:2.2.6"
-    implementation "androidx.room:room-ktx:2.2.6"
+    implementation "androidx.room:room-runtime:2.3.0"
+    kapt "androidx.room:room-compiler:2.3.0"
+    implementation "androidx.room:room-ktx:2.3.0"
 
     //Firebase
     implementation "com.google.firebase:firebase-analytics:17.3.0"
@@ -169,7 +169,7 @@ dependencies {
     implementation "androidx.datastore:datastore-preferences:1.0.0-beta01"
 
     //ViewBindingDelegate
-    implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.4.4'
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.4.6'
     implementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.4.7'
 
     // Hilt

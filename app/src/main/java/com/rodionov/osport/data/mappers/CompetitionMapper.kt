@@ -13,3 +13,7 @@ fun CompetitionShortResponse.toModel(): CompetitionShort {
 fun CompetitionShort.toEntity() = CompetitionShortEntity(
     id, image, title, date, time, details
 )
+
+fun CompetitionShortEntity.toModel() = CompetitionShort(
+    id, image, title, date, time, details
+)

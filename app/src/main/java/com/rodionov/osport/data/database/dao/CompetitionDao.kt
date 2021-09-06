@@ -18,7 +18,7 @@ interface CompetitionDao {
     suspend fun getCompetitionShort(competitionShortId: String): CompetitionShortEntity?
 
     @Query("SELECT * FROM competitions_short")
-    fun getCompetitionShortPagingSource(): PagingSource<Int, CompetitionShort>
+    fun getCompetitionShortPagingSource(): PagingSource<Int, CompetitionShortEntity>
 
     @Query("DELETE FROM competitions_short")
     suspend fun clearAllCompetitionShort()

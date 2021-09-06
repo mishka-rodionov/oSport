@@ -1,5 +1,6 @@
 package com.rodionov.osport.presentation.event_news.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +14,12 @@ import com.rodionov.osport.domain.model.CompetitionShort
 class CompetitionShortPagingAdapter: PagingDataAdapter<CompetitionShort, RecyclerView.ViewHolder>(COMPETITION_SHORT_COMPARATOR) {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        Log.d("LOG_TAG", "onBindViewHolder: ")
         getItem(position)?.let { (holder as CompetitionShortViewHolder).bind(it) }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        Log.d("LOG_TAG", "onCreateViewHolder: ")
         return CompetitionShortViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_competition_short, parent, false)
         )
