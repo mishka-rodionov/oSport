@@ -1,6 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/default_margin_8">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_competition_short_title_height"
+        android:background="@drawable/bg_gradient_title"
+        app:layout_constraintBottom_toBottomOf="@id/ivCompetitionImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tvCompetitionTitle"
+            style="@style/Text.Bold.White.20"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/default_margin_16"
+            android:gravity="center_vertical"
+            tools:text="Осенний старт" />
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/ivCompetitionImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_competition_short_height"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCompetitionDetailsLabel"
+        style="@style/Text.18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin_16"
+        android:layout_marginTop="@dimen/default_margin_16"
+        android:gravity="center_vertical"
+        android:text="@string/common_detail_information_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilCompetitionDate" />
+
+    <TextView
+        android:id="@+id/tvCompetitionShortDetails"
+        style="@style/Text.Hint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tvCompetitionDetailsLabel"
+        app:layout_constraintTop_toBottomOf="@id/tvCompetitionDetailsLabel"
+        tools:text="Предисловие: Наконец появилась возможность добраться до интернета, сейчас мы находимся в Панамском канале и здесь есть wifi. Я на судне уже больше месяца и пока я здесь, я писал все интересное что здесь происходит и вот наконец есть возможность этим поделиться. Фотографий пока не будет, их я выложу или позже, или уже когда вернусь домой. Итак, понеслась:" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilCompetitionDate"
+        android:layout_width="0dp"
+        style="@style/TextInputLayoutOutlined"
+        android:layout_marginTop="@dimen/default_margin_16"
+        android:layout_marginEnd="@dimen/default_margin_8"
+        android:hint="@string/hint_date"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/colorError"
+        app:helperText="Дата проведения старта"
+        app:helperTextEnabled="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tilCompetitionTime"
+        app:layout_constraintTop_toBottomOf="@id/ivCompetitionImage"
+        app:startIconDrawable="@drawable/ic_calendar">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCompetitionDate"
+            style="@style/EditTextOutlined"
+            android:focusable="false"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilCompetitionTime"
+        android:layout_width="0dp"
+        style="@style/TextInputLayoutOutlined"
+        android:layout_marginTop="@dimen/default_margin_16"
+        android:layout_marginStart="@dimen/default_margin_8"
+        android:hint="@string/hint_time"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/colorError"
+        app:helperText="Время начала соревнований"
+        app:helperTextEnabled="true"
+        app:layout_constraintStart_toEndOf="@id/tilCompetitionDate"
+        app:layout_constraintTop_toBottomOf="@id/ivCompetitionImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:startIconDrawable="@drawable/ic_clock">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCompetitionTime"
+            style="@style/EditTextOutlined"
+            android:focusable="false"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,7 +8,7 @@ import com.rodionov.osport.databinding.FragmentEventCreatorBinding
 
 class EventCreatorFragment: BaseFragment(R.layout.fragment_event_creator) {
 
-    private val binding: FragmentEventCreatorBinding by viewBinding()
+    private val binding: FragmentEventCreatorBinding by viewBinding(FragmentEventCreatorBinding::bind)
 
     override fun initViews() {
 

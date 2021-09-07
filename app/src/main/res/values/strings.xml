@@ -23,6 +23,8 @@
     <string name="hint_last_name">Фамилия</string>
     <string name="hint_first_name">Имя</string>
     <string name="hint_phone">Телефон</string>
+    <string name="hint_date">Дата</string>
+    <string name="hint_time">Время</string>
 
     <string name="label_account">Личный кабинет</string>
     <string name="label_russian_language" translatable="false">Русский</string>
