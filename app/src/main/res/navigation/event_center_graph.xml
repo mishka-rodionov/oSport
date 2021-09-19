@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/event_center_graph"
     app:startDestination="@id/eventCenterFragment">
 
     <fragment
         android:id="@+id/eventCenterFragment"
         android:name="com.rodionov.osport.presentation.event_center.EventCenterFragment"
-        android:label="EventCenterFragment" />
+        android:label="EventCenterFragment"
+        tools:layout="@layout/fragment_event_center">
+        <action
+            android:id="@+id/action_eventCenterFragment_to_eventCreatorFragment"
+            app:destination="@id/eventCreatorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventCreatorFragment"
+        android:name="com.rodionov.osport.presentation.event_creator.EventCreatorFragment"
+        android:label="EventCreatorFragment"
+        tools:layout="@layout/fragment_event_creator"/>
 </navigation>

@@ -27,6 +27,16 @@
     <string name="hint_time">Время</string>
     <string name="hint_direction">Направление</string>
     <string name="hint_start_interval">Стартовый интервал</string>
+    <string name="hint_place">Населенный пункт</string>
+    <string name="hint_organizer">Организатор</string>
+
+
+    <string name="helper_text_start_interval">Стартовый интервал</string>
+    <string name="helper_text_place">Населенный пункт</string>
+    <string name="helper_text_direction">Направление дистанции</string>
+    <string name="helper_text_time">Время начала соревнований</string>
+    <string name="helper_text_date">Дата проведения старта</string>
+    <string name="helper_text_organizer">Организатор</string>
 
     <string name="label_account">Личный кабинет</string>
     <string name="label_russian_language" translatable="false">Русский</string>
@@ -40,6 +50,8 @@
     <string name="label_login">Логин</string>
     <string name="label_password">Пароль</string>
     <string name="label_repeat_password">Повторите пароль</string>
+    <string name="label_location">Укажите координаты старта</string>
+    <string name="label_organizer_add">Добавить организатора</string>
 
     <string name="placeholder_coordinates">%1$s, %2$s</string>
     <string name="placeholder_count_media" translatable="false">%1$d/%2$d</string>
