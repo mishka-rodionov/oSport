@@ -14,14 +14,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/tvCompetitionTitle"
-            style="@style/Text.Bold.White.20"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCompetitionTitle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            style="@style/TextInputLayoutOutlined"
+            app:boxBackgroundColor="@color/colorWhiteTransparent"
+            app:boxStrokeWidth="0dp"
+            android:layout_marginEnd="@dimen/default_margin_8"
             android:layout_marginStart="@dimen/default_margin_16"
-            android:gravity="center_vertical"
-            tools:text="Осенний старт" />
+            android:hint="@string/hint_name_request"
+            android:textColorHint="@color/colorWhite"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/colorError"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tilCompetitionTime"
+            app:layout_constraintTop_toBottomOf="@id/ivCompetitionImage"
+            app:endIconTint="@color/colorWhite"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/ic_edit"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCompetitionTitle"
+                style="@style/EditTextOutlined"
+                android:focusable="false"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </FrameLayout>
 
@@ -39,12 +58,12 @@
         style="@style/Text.18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin_16"
-        android:layout_marginTop="@dimen/default_margin_16"
+        android:layout_marginStart="@dimen/default_margin_8"
+        android:layout_marginTop="@dimen/default_margin_8"
         android:gravity="center_vertical"
         android:text="@string/common_detail_information_label"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tilCompetitionDate" />
+        app:layout_constraintTop_toBottomOf="@id/tilCompetitionStartInterval" />
 
     <TextView
         android:id="@+id/tvCompetitionShortDetails"
@@ -105,5 +124,50 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilCompetitionDirection"
+        android:layout_width="0dp"
+        style="@style/TextInputLayoutOutlined"
+        android:layout_marginTop="@dimen/default_margin_8"
+        android:hint="@string/hint_direction"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/colorError"
+        app:helperText="Направление дистанции"
+        app:helperTextEnabled="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilCompetitionTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:startIconDrawable="@drawable/ic_arrow_direction">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCompetitionDirection"
+            style="@style/EditTextOutlined"
+            android:focusable="false"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilCompetitionStartInterval"
+        android:layout_width="0dp"
+        style="@style/TextInputLayoutExposed"
+        android:layout_marginTop="@dimen/default_margin_8"
+        android:hint="@string/hint_start_interval"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/colorError"
+        app:helperText="Стартовый интервал"
+        app:helperTextEnabled="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilCompetitionDirection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:startIconDrawable="@drawable/ic_timer">
+
+        <AutoCompleteTextView
+            android:id="@+id/etCompetitionStartInterval"
+            style="@style/AutocompleteViewOutlined"
+            android:focusable="false"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

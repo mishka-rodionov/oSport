@@ -8,9 +8,7 @@ import com.rodionov.osport.app.utils.Result
 import com.rodionov.osport.data.database.dao.CompetitionDao
 import com.rodionov.osport.data.database.dao.CompetitionShortRemoteKeyDao
 import com.rodionov.osport.data.database.entities.CompetitionShortEntity
-import com.rodionov.osport.data.dto.requests.CompetitionRequest
 import com.rodionov.osport.data.dto.requests.CompetitionShortRequest
-import com.rodionov.osport.data.dto.response.CompetitionShortResponse
 import com.rodionov.osport.data.mappers.toModel
 import com.rodionov.osport.data.network.CompetitionApi
 import com.rodionov.osport.data.remote_mediators.CompetitionShortRemoteMediator

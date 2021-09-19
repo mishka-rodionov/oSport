@@ -5,7 +5,7 @@ import com.rodionov.osport.data.dto.OrganizerDto
 import com.rodionov.osport.domain.model.CompetitionState
 import com.rodionov.osport.domain.model.Place
 
-data class CompetitionRequest(
+data class CompetitionNewRequest(
     @SerializedName("date")
     val date: String,
     @SerializedName("state")
