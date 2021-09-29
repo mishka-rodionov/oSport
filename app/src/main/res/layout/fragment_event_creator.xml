@@ -74,7 +74,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etCompetitionDetails"
                 style="@style/EditTextOutlined"
-                android:inputType="text" />
+                android:inputType="textMultiLine" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -175,6 +175,7 @@
             android:layout_width="0dp"
             android:layout_marginTop="@dimen/default_margin_8"
             android:hint="@string/hint_direction"
+
             app:errorEnabled="true"
             app:errorTextColor="@color/colorError"
             app:helperText="@string/helper_text_direction"
