@@ -56,28 +56,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvCompetitionDetailsLabel"
-            style="@style/Text.18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_margin_8"
-            android:layout_marginTop="@dimen/default_margin_8"
-            android:gravity="center_vertical"
-            android:text="@string/common_detail_information_label"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCompetitionOrganizerAdd" />
-
-        <TextView
-            android:id="@+id/tvCompetitionShortDetails"
-            style="@style/Text.Hint"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCompetitionDetails"
+            style="@style/TextInputLayoutOutlined"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/default_margin_8"
+            android:hint="@string/hint_competition_details"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/colorError"
+            app:helperText="@string/helper_text_competition_details"
+            app:helperTextEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tvCompetitionDetailsLabel"
-            app:layout_constraintTop_toBottomOf="@id/tvCompetitionDetailsLabel"
-            tools:text="редисловие: Наконец появилась возможность добраться до интернета, сейчас мы находимся в Панамском канале и здесь есть wifi. Я на судне уже больше месяца и пока я здесь, я писал все интересное что здесь происходит и вот наконец есть возможность этим поделиться. Фотографий пока не будет, их я выложу или позже, или уже когда вернусь домой. Итак, понеслась:" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCompetitionOrganizerAdd"
+            app:startIconDrawable="@drawable/ic_info">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCompetitionDetails"
+                style="@style/EditTextOutlined"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/tvCompetitionLocation"

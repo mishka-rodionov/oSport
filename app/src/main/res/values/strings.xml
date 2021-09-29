@@ -29,6 +29,7 @@
     <string name="hint_start_interval">Стартовый интервал</string>
     <string name="hint_place">Населенный пункт</string>
     <string name="hint_organizer">Организатор</string>
+    <string name="hint_competition_details">Подробности</string>
 
 
     <string name="helper_text_start_interval">Стартовый интервал</string>
@@ -37,6 +38,7 @@
     <string name="helper_text_time">Время начала соревнований</string>
     <string name="helper_text_date">Дата проведения старта</string>
     <string name="helper_text_organizer">Организатор</string>
+    <string name="helper_text_competition_details">Подробная информация о событии</string>
 
     <string name="label_account">Личный кабинет</string>
     <string name="label_russian_language" translatable="false">Русский</string>
