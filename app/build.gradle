@@ -53,6 +53,10 @@ android {
 }
 
 dependencies {
+
+    implementation project(":feature:event_creator")
+    implementation project(":core:resources")
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     implementation Libs.appcompat
