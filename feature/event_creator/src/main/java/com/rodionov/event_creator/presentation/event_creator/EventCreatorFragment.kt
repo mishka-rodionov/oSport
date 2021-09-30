@@ -1,9 +1,8 @@
-package com.rodionov.osport.presentation.event_creator
+package com.rodionov.event_creator.presentation.event_creator
 
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.rodionov.osport.R
 import com.rodionov.osport.app.platform.BaseFragment
-import com.rodionov.osport.databinding.FragmentAccountBinding
 import com.rodionov.osport.databinding.FragmentEventCreatorBinding
 
 class EventCreatorFragment: BaseFragment(R.layout.fragment_event_creator) {

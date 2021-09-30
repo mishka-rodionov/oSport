@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/eventCreatorFragment"
-        android:name="com.rodionov.osport.presentation.event_creator.EventCreatorFragment"
+        android:name="EventCreatorFragment"
         android:label="EventCreatorFragment"
         tools:layout="@layout/fragment_event_creator"/>
 </navigation>

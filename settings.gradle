@@ -1,2 +1,3 @@
 include ':app'
 rootProject.name='oSport'
+include ':feature:event_creator'
