@@ -7,9 +7,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.TextViewCompat
 import androidx.fragment.app.DialogFragment
-import com.rodionov.osport.R
-import com.rodionov.osport.app.extensions.setTextOrHide
-import kotlinx.android.synthetic.main.dialog_common.view.*
+import com.rodionov.base.R
 
 class CommonDialog : DialogFragment() {
 
