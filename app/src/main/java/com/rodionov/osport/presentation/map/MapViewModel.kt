@@ -1,9 +1,9 @@
 package com.rodionov.osport.presentation.map
 
-import com.rodionov.osport.app.platform.BaseViewModel
-import com.rodionov.osport.app.platform.NavigationEvent
+import com.rodionov.base.viewmodel.BaseViewModel
+import com.rodionov.base.platform.NavigationEvent
 
-class MapViewModel : BaseViewModel() {
+class MapViewModel : com.rodionov.base.viewmodel.BaseViewModel() {
 
     fun exit() {
         navigate(NavigationEvent.Exit)

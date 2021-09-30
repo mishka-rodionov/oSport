@@ -1,10 +1,8 @@
 package com.rodionov.osport.presentation.newevent
 
-import com.rodionov.osport.app.platform.BaseViewModel
-import com.rodionov.osport.app.platform.NavigationEvent
-import com.rodionov.osport.presentation.map.MapFragment
+import com.rodionov.base.viewmodel.BaseViewModel
 
-class NewEventViewModel : BaseViewModel() {
+class NewEventViewModel : com.rodionov.base.viewmodel.BaseViewModel() {
 
     fun navigateToMap() {
     }

@@ -1,10 +1,8 @@
 package com.rodionov.osport.presentation.news
 
-import com.rodionov.osport.app.platform.BaseViewModel
-import com.rodionov.osport.app.platform.NavigationEvent
-import com.rodionov.osport.presentation.newevent.NewEventFragment
+import com.rodionov.base.viewmodel.BaseViewModel
 
-class NewsViewModel : BaseViewModel() {
+class NewsViewModel : com.rodionov.base.viewmodel.BaseViewModel() {
 
     fun navigateToNewEvent() {
     }

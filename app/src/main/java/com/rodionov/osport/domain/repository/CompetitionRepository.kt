@@ -1,7 +1,6 @@
 package com.rodionov.osport.domain.repository
 
 import androidx.paging.PagingData
-import com.rodionov.osport.app.utils.Result
 import com.rodionov.osport.data.database.entities.CompetitionShortEntity
 import com.rodionov.osport.domain.model.CompetitionShort
 import kotlinx.coroutines.flow.Flow

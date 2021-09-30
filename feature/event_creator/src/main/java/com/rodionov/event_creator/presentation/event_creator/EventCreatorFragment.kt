@@ -1,5 +1,7 @@
 package com.rodionov.event_creator.presentation.event_creator
 
+import by.kirich1409.viewbindingdelegate.viewBinding
+import com.rodionov.base.ui.BaseFragment
 import com.rodionov.event_creator.R
 import com.rodionov.event_creator.databinding.FragmentEventCreatorBinding
 

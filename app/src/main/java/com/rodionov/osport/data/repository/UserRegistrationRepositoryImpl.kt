@@ -1,14 +1,13 @@
 package com.rodionov.osport.data.repository
 
-import com.rodionov.osport.app.platform.BaseRepository
-import com.rodionov.osport.app.platform.ErrorHandler
-import com.rodionov.osport.app.platform.State
+import com.rodionov.base.repository.BaseRepository
+import com.rodionov.base.platform.ErrorHandler
+import com.rodionov.base.platform.State
 import com.rodionov.osport.data.mappers.CommonMapper
 import com.rodionov.osport.data.mappers.UserMapper
 import com.rodionov.osport.data.network.UserRegistrationApi
 import com.rodionov.osport.domain.model.User
 import com.rodionov.osport.domain.repository.UserRegistrationRepository
-import com.rodionov.osport.app.utils.Result
 import com.rodionov.osport.data.database.dao.UserDao
 import com.rodionov.osport.data.dto.IdDto
 import com.rodionov.osport.data.dto.requests.LoginRequest
@@ -17,7 +16,7 @@ class UserRegistrationRepositoryImpl(
     errorHandler: ErrorHandler,
     private val userRegistrationApi: UserRegistrationApi,
     private val userDao: UserDao
-) : BaseRepository(errorHandler), UserRegistrationRepository {
+) : com.rodionov.base.repository.BaseRepository(errorHandler), UserRegistrationRepository {
 
     override suspend fun userRegister(
         user: User,

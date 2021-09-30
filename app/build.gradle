@@ -56,6 +56,7 @@ dependencies {
 
     implementation project(":feature:event_creator")
     implementation project(":core:resources")
+    implementation project(":core:base")
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"

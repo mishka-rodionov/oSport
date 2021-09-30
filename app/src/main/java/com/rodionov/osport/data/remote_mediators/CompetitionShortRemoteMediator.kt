@@ -4,13 +4,10 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
-import com.rodionov.osport.app.utils.Result
 import com.rodionov.osport.data.database.dao.CompetitionDao
 import com.rodionov.osport.data.database.dao.CompetitionShortRemoteKeyDao
 import com.rodionov.osport.data.database.entities.CompetitionShortEntity
 import com.rodionov.osport.data.database.entities.CompetitionShortRemoteKeyEntity
-import com.rodionov.osport.data.mappers.toEntity
-import com.rodionov.osport.domain.model.CompetitionShort
 import com.rodionov.osport.domain.repository.CompetitionRepository
 import retrofit2.HttpException
 import java.io.IOException

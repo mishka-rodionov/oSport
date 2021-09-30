@@ -1,14 +1,12 @@
 package com.rodionov.osport.presentation.registration
 
-import com.rodionov.osport.app.platform.BaseViewModel
-import com.rodionov.osport.app.platform.NavigationEvent
+import com.rodionov.base.viewmodel.BaseViewModel
 import com.rodionov.osport.domain.model.User
 import com.rodionov.osport.domain.use_cases.UserRegistrationUseCase
-import com.rodionov.osport.presentation.account.AccountFragment
 
 class RegistrationViewModel(
     private val userRegistrationUseCase: UserRegistrationUseCase
-) : BaseViewModel() {
+) : com.rodionov.base.viewmodel.BaseViewModel() {
 
     fun register(user: User, password: String) {
         launch{

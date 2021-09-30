@@ -2,13 +2,13 @@ package com.rodionov.osport.presentation.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.rodionov.osport.app.platform.BaseViewModel
-import com.rodionov.osport.app.platform.NavigationEvent
+import com.rodionov.base.viewmodel.BaseViewModel
+import com.rodionov.base.platform.NavigationEvent
 import com.rodionov.osport.domain.use_cases.UserRegistrationUseCase
 
 class LoginViewModel(
     private val userRegistrationUseCase: UserRegistrationUseCase
-) : BaseViewModel() {
+) : com.rodionov.base.viewmodel.BaseViewModel() {
 
     private val _successfulLogin = MutableLiveData<Boolean>()
     val successfulLogin: LiveData<Boolean> =_successfulLogin

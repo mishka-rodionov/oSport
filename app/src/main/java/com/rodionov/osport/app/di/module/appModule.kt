@@ -2,10 +2,10 @@ package com.rodionov.osport.app.di.module
 
 import android.content.Context
 import com.google.gson.Gson
-import com.rodionov.osport.app.platform.ErrorHandler
-import com.rodionov.osport.app.platform.LocationProvider
-import com.rodionov.osport.app.platform.NetworkHandler
-import com.rodionov.osport.app.platform.ResourceManager
+import com.rodionov.base.platform.ErrorHandler
+import com.rodionov.base.platform.LocationProvider
+import com.rodionov.base.platform.NetworkHandler
+import com.rodionov.base.platform.ResourceManager
 import org.koin.dsl.module
 
 val appModule = module {

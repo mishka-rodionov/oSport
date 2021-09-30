@@ -1,21 +1,18 @@
 package com.rodionov.osport.presentation.main
 
 import android.os.Bundle
-import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
 import androidx.viewbinding.ViewBinding
 import com.rodionov.osport.R
-import com.rodionov.osport.app.platform.BaseActivity
-import com.rodionov.osport.app.platform.BaseViewModel
+import com.rodionov.base.ui.BaseActivity
+import com.rodionov.base.viewmodel.BaseViewModel
 import com.rodionov.osport.databinding.ActivityMainBinding
 
-class MainActivity : BaseActivity(){
+class MainActivity : com.rodionov.base.ui.BaseActivity(){
 
-    override val screenViewModel: BaseViewModel?
+    override val screenViewModel: com.rodionov.base.viewmodel.BaseViewModel?
         get() = super.screenViewModel
 
     lateinit var appBarConfiguration: AppBarConfiguration

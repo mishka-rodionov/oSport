@@ -2,9 +2,8 @@ package com.rodionov.osport.data.repository
 
 import android.util.Log
 import androidx.paging.*
-import com.rodionov.osport.app.platform.BaseRepository
-import com.rodionov.osport.app.platform.ErrorHandler
-import com.rodionov.osport.app.utils.Result
+import com.rodionov.base.repository.BaseRepository
+import com.rodionov.base.platform.ErrorHandler
 import com.rodionov.osport.data.database.dao.CompetitionDao
 import com.rodionov.osport.data.database.dao.CompetitionShortRemoteKeyDao
 import com.rodionov.osport.data.database.entities.CompetitionShortEntity
@@ -21,7 +20,7 @@ class CompetitionRepositoryImpl(
     private val competitionShortRemoteKeyDao: CompetitionShortRemoteKeyDao,
     private val competitionDao: CompetitionDao,
     errorHandler: ErrorHandler
-) : BaseRepository(errorHandler), CompetitionRepository {
+) : com.rodionov.base.repository.BaseRepository(errorHandler), CompetitionRepository {
 
     override suspend fun getCompetitionShortList(
         skip: Long,

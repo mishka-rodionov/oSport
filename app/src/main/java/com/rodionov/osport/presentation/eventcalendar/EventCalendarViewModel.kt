@@ -1,10 +1,8 @@
 package com.rodionov.osport.presentation.eventcalendar
 
-import com.rodionov.osport.app.platform.BaseViewModel
-import com.rodionov.osport.app.platform.NavigationEvent
-import com.rodionov.osport.presentation.eventdetails.EventDetailsFragment
+import com.rodionov.base.viewmodel.BaseViewModel
 
-class EventCalendarViewModel : BaseViewModel() {
+class EventCalendarViewModel : com.rodionov.base.viewmodel.BaseViewModel() {
 
     fun navigateToEvent() {
     }
