@@ -1,5 +1,6 @@
 package com.rodionov.osport.presentation.eventcalendar
 
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.rodionov.osport.R
 import com.rodionov.base.extensions.setData
@@ -8,11 +9,12 @@ import com.rodionov.osport.databinding.FragmentEventCalendarBinding
 import com.rodionov.osport.presentation.eventcalendar.delegates.EventCalendarItem
 import com.rodionov.osport.presentation.eventcalendar.delegates.eventCalendarDelegates
 import kotlinx.android.synthetic.main.fragment_event_calendar.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * Created by rodionov on 30.03.2020.
  */
-class EventCalendarFragment : com.rodionov.base.ui.BaseFragment(R.layout.fragment_event_calendar) {
+class EventCalendarFragment : BaseFragment(R.layout.fragment_event_calendar) {
 
     private val binding: FragmentEventCalendarBinding by viewBinding()
 

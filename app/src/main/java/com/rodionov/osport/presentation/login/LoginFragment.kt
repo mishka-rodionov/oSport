@@ -1,13 +1,15 @@
 package com.rodionov.osport.presentation.login
 
 import android.widget.Toast
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.rodionov.osport.R
 import com.rodionov.base.ui.BaseFragment
 import com.rodionov.base.platform.NavigationEvent
 import com.rodionov.osport.databinding.FragmentLoginBinding
 import kotlinx.android.synthetic.main.fragment_login.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LoginFragment : com.rodionov.base.ui.BaseFragment(R.layout.fragment_login) {
+class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
     private val binding: FragmentLoginBinding by viewBinding()
 

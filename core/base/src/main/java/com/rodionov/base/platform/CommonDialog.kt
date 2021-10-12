@@ -8,39 +8,44 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.TextViewCompat
 import androidx.fragment.app.DialogFragment
 import com.rodionov.base.R
+import com.rodionov.base.extensions.setTextOrHide
+import com.rodionov.resources.databinding.DialogCommonBinding
 
 class CommonDialog : DialogFragment() {
 
     private var listener: CommonDialogListener? = null
 
+
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         listener = (targetFragment as? CommonDialogListener) ?: activity as? CommonDialogListener
 
         val view = View.inflate(context, R.layout.dialog_common, null)
+        val binding = DialogCommonBinding.bind(view)
         val builder = AlertDialog.Builder(requireContext(), R.style.AlertDialog_Theme)
 
         builder.setView(view)
 
-        setupTexts(view)
-        setupButtons(view, builder)
+        setupTexts(binding)
+        setupButtons(builder)
 
         return builder.create()
     }
 
-    private fun setupTexts(view: View) {
+    private fun setupTexts(binding: DialogCommonBinding) {
         val title = arguments?.getString(TITLE_KEY)
         val message = arguments?.getString(MESSAGE_KEY)
         val messageTextAppearance = arguments?.getInt(MESSAGE_APPEARANCE_KEY) ?: DEFAULT_VALUE_KEY
 
-        view.tvTitle.setTextOrHide(title)
-        view.tvMessage.setTextOrHide(message)
+        binding.tvTitle.setTextOrHide(title)
+        binding.tvMessage.setTextOrHide(message)
 
         if (messageTextAppearance != DEFAULT_VALUE_KEY) {
-            TextViewCompat.setTextAppearance(view.tvMessage, messageTextAppearance)
+            TextViewCompat.setTextAppearance(binding.tvMessage, messageTextAppearance)
         }
     }
 
-    private fun setupButtons(view: View, builder: AlertDialog.Builder) {
+    private fun setupButtons(builder: AlertDialog.Builder) {
         val tag = arguments?.getString(TAG_KEY)
 
         var positiveButton = arguments?.getInt(BTN_OK_KEY)

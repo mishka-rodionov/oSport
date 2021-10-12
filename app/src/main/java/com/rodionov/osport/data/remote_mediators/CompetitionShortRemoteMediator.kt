@@ -11,6 +11,9 @@ import com.rodionov.osport.data.database.entities.CompetitionShortRemoteKeyEntit
 import com.rodionov.osport.domain.repository.CompetitionRepository
 import retrofit2.HttpException
 import java.io.IOException
+import com.rodionov.base.utils.Result
+import com.rodionov.osport.data.mappers.toEntity
+import com.rodionov.osport.domain.model.CompetitionShort
 
 @ExperimentalPagingApi
 class CompetitionShortRemoteMediator(

@@ -6,6 +6,7 @@ import com.rodionov.base.utils.Logger.TAG
 import com.rodionov.osport.domain.model.User
 import com.rodionov.osport.domain.repository.PreferencesRepository
 import com.rodionov.osport.domain.repository.UserRegistrationRepository
+import com.rodionov.base.utils.Result
 
 class UserRegistrationUseCaseImpl(
     private val userRegistrationRepository: UserRegistrationRepository,

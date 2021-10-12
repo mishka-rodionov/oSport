@@ -2,15 +2,17 @@ package com.rodionov.osport.presentation.main
 
 import android.os.Bundle
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
 import androidx.viewbinding.ViewBinding
 import com.rodionov.osport.R
 import com.rodionov.base.ui.BaseActivity
 import com.rodionov.base.viewmodel.BaseViewModel
 import com.rodionov.osport.databinding.ActivityMainBinding
 
-class MainActivity : com.rodionov.base.ui.BaseActivity(){
+class MainActivity : BaseActivity(){
 
     override val screenViewModel: com.rodionov.base.viewmodel.BaseViewModel?
         get() = super.screenViewModel

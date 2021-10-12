@@ -1,5 +1,6 @@
 package com.rodionov.osport.presentation.event_news
 
+import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import androidx.paging.map
 import com.rodionov.base.viewmodel.BaseViewModel
@@ -9,7 +10,7 @@ import kotlinx.coroutines.flow.map
 
 class EventNewsViewModel(
     private val competitionRepository: CompetitionRepository
-) : com.rodionov.base.viewmodel.BaseViewModel() {
+) : BaseViewModel() {
 
     fun getFlow() = competitionRepository.getCompetitionShortListFlow().map {
         it.map { c ->

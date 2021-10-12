@@ -1,11 +1,14 @@
 package com.rodionov.osport.presentation.registration
 
+import by.kirich1409.viewbindingdelegate.viewBinding
+import com.rodionov.base.extensions.showToast
 import com.rodionov.osport.R
 import com.rodionov.base.ui.BaseFragment
 import com.rodionov.osport.databinding.FragmentRegistrationBinding
 import com.rodionov.osport.domain.model.User
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class RegistrationFragment : com.rodionov.base.ui.BaseFragment(R.layout.fragment_registration) {
+class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
 
     private val binding: FragmentRegistrationBinding by viewBinding()
 

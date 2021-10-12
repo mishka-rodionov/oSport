@@ -4,6 +4,7 @@ import androidx.paging.PagingData
 import com.rodionov.osport.data.database.entities.CompetitionShortEntity
 import com.rodionov.osport.domain.model.CompetitionShort
 import kotlinx.coroutines.flow.Flow
+import com.rodionov.base.utils.Result
 
 interface CompetitionRepository {
 

@@ -1,10 +1,12 @@
 package com.rodionov.osport.presentation.event_center
 
+import androidx.navigation.fragment.findNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.rodionov.osport.R
 import com.rodionov.base.ui.BaseFragment
 import com.rodionov.osport.databinding.FragmentEventCenterBinding
 
-class EventCenterFragment: com.rodionov.base.ui.BaseFragment(R.layout.fragment_event_center) {
+class EventCenterFragment: BaseFragment(R.layout.fragment_event_center) {
 
     override fun initViews() {
         binding.tvtest.setOnClickListener {

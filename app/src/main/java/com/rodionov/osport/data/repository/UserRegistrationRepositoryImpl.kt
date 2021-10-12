@@ -11,6 +11,7 @@ import com.rodionov.osport.domain.repository.UserRegistrationRepository
 import com.rodionov.osport.data.database.dao.UserDao
 import com.rodionov.osport.data.dto.IdDto
 import com.rodionov.osport.data.dto.requests.LoginRequest
+import com.rodionov.base.utils.Result
 
 class UserRegistrationRepositoryImpl(
     errorHandler: ErrorHandler,

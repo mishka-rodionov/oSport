@@ -1,12 +1,14 @@
 package com.rodionov.osport.presentation.profile
 
 import android.os.Bundle
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.rodionov.osport.R
 import com.rodionov.base.ui.BaseFragment
 import com.rodionov.osport.databinding.FragmentProfileBinding
 import kotlinx.android.synthetic.main.fragment_profile.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProfileFragment : com.rodionov.base.ui.BaseFragment(R.layout.fragment_profile) {
+class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
 
     private val viewModel: ProfileViewModel by viewModel()
 

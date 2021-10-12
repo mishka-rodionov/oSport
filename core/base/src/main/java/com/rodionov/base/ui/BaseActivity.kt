@@ -19,13 +19,16 @@ import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.orgkhim.tm.app.extensions.getCompatColor
-import com.rodionov.osport.R
-import com.rodionov.osport.app.extensions.observeEvent
-import com.rodionov.osport.app.extensions.setStatusBarColor
-import com.rodionov.osport.app.extensions.setStatusBarLightMode
-import com.rodionov.osport.app.extensions.showToast
-import kotlinx.android.synthetic.main.layout_progress.*
-
+import com.rodionov.base.R
+import com.rodionov.base.extensions.observeEvent
+import com.rodionov.base.extensions.setStatusBarColor
+import com.rodionov.base.extensions.setStatusBarLightMode
+import com.rodionov.base.extensions.showToast
+import com.rodionov.base.platform.CommonDialog
+import com.rodionov.base.platform.Failure
+import com.rodionov.base.platform.LocaleHelper
+import com.rodionov.base.platform.State
+import com.rodionov.base.viewmodel.BaseViewModel
 
 abstract class BaseActivity: AppCompatActivity() {
 
@@ -95,7 +98,7 @@ abstract class BaseActivity: AppCompatActivity() {
     }
 
     private fun progressStatus(visibility: Int) {
-        progressLayout?.visibility = visibility
+//        progressLayout?.visibility = visibility
     }
 
     internal fun dialogNotAlreadyShown(tag: String) =

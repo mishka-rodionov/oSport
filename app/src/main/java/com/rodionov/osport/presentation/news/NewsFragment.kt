@@ -1,11 +1,13 @@
 package com.rodionov.osport.presentation.news
 
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.rodionov.osport.R
 import com.rodionov.base.ui.BaseFragment
 import com.rodionov.osport.databinding.FragmentNewsBinding
 import kotlinx.android.synthetic.main.fragment_news.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class NewsFragment : com.rodionov.base.ui.BaseFragment(R.layout.fragment_news){
+class NewsFragment : BaseFragment(R.layout.fragment_news){
 
     private val binding: FragmentNewsBinding by viewBinding()
 

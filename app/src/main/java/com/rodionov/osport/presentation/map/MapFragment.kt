@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.toBitmap
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -14,8 +15,9 @@ import com.rodionov.osport.R
 import com.rodionov.base.ui.BaseFragment
 import com.rodionov.osport.databinding.FragmentMapBinding
 import com.rodionov.osport.presentation.common.ScrollMapFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MapFragment : com.rodionov.base.ui.BaseFragment(R.layout.fragment_map), OnMapReadyCallback {
+class MapFragment : BaseFragment(R.layout.fragment_map), OnMapReadyCallback {
 
     private val binding: FragmentMapBinding by viewBinding()
 

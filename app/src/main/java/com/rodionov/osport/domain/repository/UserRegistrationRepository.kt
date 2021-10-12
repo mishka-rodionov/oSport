@@ -2,6 +2,7 @@ package com.rodionov.osport.domain.repository
 
 import com.rodionov.base.platform.State
 import com.rodionov.osport.domain.model.User
+import com.rodionov.base.utils.Result
 
 interface UserRegistrationRepository {
 

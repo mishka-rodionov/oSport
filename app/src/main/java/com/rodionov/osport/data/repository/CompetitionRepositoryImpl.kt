@@ -14,6 +14,7 @@ import com.rodionov.osport.data.remote_mediators.CompetitionShortRemoteMediator
 import com.rodionov.osport.domain.model.CompetitionShort
 import com.rodionov.osport.domain.repository.CompetitionRepository
 import kotlinx.coroutines.flow.Flow
+import com.rodionov.base.utils.Result
 
 class CompetitionRepositoryImpl(
     private val competitionApi: CompetitionApi,
