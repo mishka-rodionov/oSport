@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+    <style name="ApplicationTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -92,25 +92,25 @@
 <!--        <item name="android:windowBackground">@drawable/bg_splash</item>-->
     </style>
 
-    <style name="AppTheme.RadioButton">
+    <style name="ApplicationTheme.RadioButton">
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
-    <style name="AppTheme.CheckBox">
+    <style name="ApplicationTheme.CheckBox">
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
-    <style name="AppTheme.HorizontalProgressBar">
+    <style name="ApplicationTheme.HorizontalProgressBar">
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
-    <style name="AppTheme.TextInputLayout">
+    <style name="ApplicationTheme.TextInputLayout">
         <item name="colorAccent">@color/colorPrimary</item>
 <!--        <item name="android:textColorHint">@color/bg_edit_text_hint</item>-->
         <item name="colorError">@color/colorDarkError</item>
     </style>
 
-    <style name="AppTheme.EditText">
+    <style name="ApplicationTheme.EditText">
         <item name="colorControlNormal">@color/colorView</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
         <item name="colorError">@color/colorDarkError</item>
@@ -238,7 +238,7 @@
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
-    <style name="RadioButton" parent="AppTheme.RadioButton">
+    <style name="RadioButton" parent="ApplicationTheme.RadioButton">
         <item name="android:theme">@style/RadioButton</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
@@ -263,7 +263,7 @@
     </style>
 
     <style name="EditText.Theme">
-        <item name="android:theme">@style/AppTheme.EditText</item>
+        <item name="android:theme">@style/ApplicationTheme.EditText</item>
         <item name="android:background">@drawable/bg_btn_empty</item>
         <item name="android:layout_height">@dimen/edit_text_height</item>
         <item name="android:padding">@dimen/default_margin_8</item>
@@ -283,7 +283,7 @@
 
     <style name="LoginTextInputLayout" parent="Widget.Design.TextInputLayout">
         <item name="hintTextAppearance">@style/HintTextAppearance</item>
-        <item name="android:theme">@style/AppTheme.TextInputLayout</item>
+        <item name="android:theme">@style/ApplicationTheme.TextInputLayout</item>
     </style>
 
     <style name="TextFieldInputLayout" parent="Widget.Design.TextInputLayout">
